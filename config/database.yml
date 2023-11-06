@@ -1,0 +1,10 @@
+default_env: &default
+  adapter: postgresql
+  encoding: unicode
+  database: s_todo
+
+development:
+  <<: *default
+
+production:
+  <<: *default

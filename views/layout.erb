@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDoアプリ</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <div>
+                <a href="/">todoアプリ</a>
+            </div>
+            <ul>
+                <% if !current_user.nil? %>
+                    <li>こんにちは、<%= current_user.name %>さん</li>
+                    <li><a href="/signout">ログアウト</a></li>
+                <% else %>
+                <li>新規ユーザーですか？</li>
+                <li><a href="/signin">ログイン</a></li>
+            　　<li><a href="/signup">新規登録</a></li>
+            　　<% end %>
+            </ul>
+        </div>
+    </nav>
+    <%= yield %>
+</body>
+</html>

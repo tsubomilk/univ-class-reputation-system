@@ -1,0 +1,1 @@
+Task.all.update_all(due_date: Date.new(2022,1,1))

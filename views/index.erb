@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>タイトル</title>
+</head>
+<body>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>タイトル</th>
+					<th>締め切り</th>
+				    <th>Done</th>
+				    <th>削除</th>
+				    <th>編集</th>
+				    <th>備考</th>
+				    <th>Star</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @tasks.each do |task| %>
+				<tr>
+					<td><%= CGI.escapeHTML(task.title) %></td>
+					<td><%= task.due_date %></td>
+					<td>
+						<% unless task.completed %>
+						<form action="/tasks/<%= task.id %>/done" method="post">
+							<input type="submit" value="Done!">
+						</form>
+						<% else %>
+						    Done!
+						<% end %>
+					</td>
+					<td>
+						<form action="/tasks/<%= task.id %>/delete" method="post">
+							<input type="submit" value="削除">
+						</form>
+					</td>
+					<td><a href="/tasks/<%= task.id %>/edit">編集</a></td>
+					<td>
+						締め切りまで<%= (task.due_date - Date.today).to_i %>日
+					</td>
+					<td>
+						<a href="/tasks/<%= task.id %>/star" style="
+						<% if task.star %>
+						  background-color: red;
+						<% else %>
+						  background-color: white;
+						<% end %>
+						  border: 1px solid black;
+						  width: 10px;
+						  height:  10px;
+						  display: block;
+						"></a>
+					</td>
+				</tr>
+				<% end %>
+				<tr>
+					<td colspan="7"><a href="/tasks/new">新しいToDo</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
