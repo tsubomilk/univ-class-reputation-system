@@ -2,6 +2,16 @@
     <form action="/tasks/<%= @task.id %>" method="post">
         <input type="text" name="title" placeholder="タイトル" value="<%= CGI.escapeHTML(@task.title) %>"><br>
         <input type="text" name="due_date" placeholder="締め切り" value="<%= @task.due_date %>"><br>
+        リスト：
+        <select name="list">
+        	<% List.all.each do |list| %>
+        	   <option value="<%= list.id %>"
+				  <li><a href="/?list=<% list.id %>" ><%= list.name %></a></li>
+				<% end %>  
+				<% list.name %>
+				</option>
+			<% end %>
+        </select><br>
         <input type="submit" value="登録">
     </form>
 </div>

@@ -1,7 +1,13 @@
 <div>
     <form action="/tasks" method="post">
         <input type="text" name="title" placeholder="タイトル">
-        <input type="text" name="due_date" placeholder="締め切り">
+        <input type="text" name="due_date" placeholder="締め切りlus">
+        リスト：
+        <select name="list">
+            <% List.all.each do |list| %>
+              <option value="<%= list.id %>"><%= list.name %></option>
+            <% end %>
+        </select><br>
         <input type="submit" value="登録">
     </form>
 </div>

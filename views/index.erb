@@ -5,7 +5,19 @@
 	<title>タイトル</title>
 </head>
 <body>
-	<div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2">
+			<ul>
+				<li><a href="/">トップ</a></li>
+				<li><a href="/tasks/done">done</a></li>
+				<li><a href="/tasks/over">締め切り経過</a></li>
+				<% @lists.each do |list| %>
+				  <li><a href="/?list=<% list.id %>" ><%= list.name %></a></li>
+				<% end %>
+			</ul>
+			</div>
+		<div class="col-lg-10">
 		<table>
 			<thead>
 				<tr>
@@ -61,6 +73,8 @@
 				</tr>
 			</tbody>
 		</table>
+		</div>
+		</div>
 	</div>
 </body>
 </html>
