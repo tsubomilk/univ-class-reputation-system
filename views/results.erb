@@ -1,0 +1,11 @@
+<div class="container">
+  <% if @results.empty? %>
+    <p>No results found</p>
+  <% else %>
+    <ul>
+      <% @results.each do |result| %>
+        <li><%= result[:name] %> (Age: <%= result[:age] %>)</li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

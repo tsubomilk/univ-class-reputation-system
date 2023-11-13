@@ -3,21 +3,23 @@
 <head>
 	<meta charset="UTF-8">
 	<title>タイトル</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-2">
-			<ul>
-				<li><a href="/">トップ</a></li>
-				<li><a href="/tasks/done">done</a></li>
-				<li><a href="/tasks/over">締め切り経過</a></li>
-				<% @lists.each do |list| %>
-				  <li><a href="/?list=<% list.id %>" ><%= list.name %></a></li>
-				<% end %>
-			</ul>
-			</div>
-		<div class="col-lg-10">
+		  <div class="container card">
+		    <h1>Search</h1>
+		    <form action="/search" method="post" class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+		  </div>
+		</div>
+		<div>
+		<tr>
+			<td colspan="7"><a href="/tasks/new">新しいToDo</a></td>
+		</tr>
 		<table>
 			<thead>
 				<tr>
@@ -68,9 +70,7 @@
 					</td>
 				</tr>
 				<% end %>
-				<tr>
-					<td colspan="7"><a href="/tasks/new">新しいToDo</a></td>
-				</tr>
+
 			</tbody>
 		</table>
 		</div>

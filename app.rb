@@ -6,6 +6,12 @@ require "./models"
 enable :sessions
 
 
+DUMMY_DATA = [
+  { name: 'Alice', age: 30 },
+  { name: 'Bob', age: 25 },
+  { name: 'Carol', age: 35 }
+]
+
 
 helpers do
     def current_user
@@ -29,7 +35,7 @@ get "/" do
         @tasks = List.find(params[:list]).tasks.where(user_id: current_user.id)
     end
     # puts @tasks
-    erb :index
+    erb :search
 end
 
 get "/signup" do
@@ -61,9 +67,23 @@ post "/signin" do
     redirect "/"
 end
 
-get "/signout" do
+post "/signout" do
     session[:user] = nil
     redirect "/"
+end
+
+get "/signout" do
+    erb :signup
+end
+
+post "/search" do
+    @results = DUMMY_DATA.select { |item| item[:name].downcase.include?(params[:query].downcase) }
+    erb :results
+    redirect "/results"
+end
+
+get "/results" do
+    erb :results
 end
 
 get "/tasks/new" do

@@ -15,8 +15,8 @@ class Task < ActiveRecord::Base
     belongs_to :list
 end
 
-scope :due_over, ->{ where("due_date < ?",Date.today).where(completed: [nil,false])}
-scope :had_by, ->(user){ where(user_id: user.id)
+# scope :due_over, ->{ where("due_date < ?",Date.today).where(completed: [nil,false])}
+# scope :had_by, ->(user){ where(user_id: user.id)
 
 
 class List  < ActiveRecord::Base
