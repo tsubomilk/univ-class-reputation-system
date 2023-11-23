@@ -1,13 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Class Review</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
 <div>
-    <form action="/tasks" method="post">
-        <input type="text" name="title" placeholder="タイトル">
-        <input type="text" name="due_date" placeholder="締め切りlus">
-        リスト：
-        <select name="list">
-            <% List.all.each do |list| %>
-              <option value="<%= list.id %>"><%= list.name %></option>
-            <% end %>
-        </select><br>
+    <form action="/courses" method="post">
+        <input type="text" name="className" placeholder="授業名">
+        <input type="text" name="teacher" placeholder="教師名">
+        <input type="text" name="grade" placeholder="開講学年">
+        <input type="text" name="week" placeholder="開講曜日">
+        <input type="text" name="time" placeholder="開講時限">
+
         <input type="submit" value="登録">
     </form>
 </div>

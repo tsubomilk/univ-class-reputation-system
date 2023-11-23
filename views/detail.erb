@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Class Review</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<div class="container mt-5">
+    <h1 class="display-4"><%= @course.className %></h1>
+    <button type="submit" class="btn btn-light"><a href="/courses/<%= @course.id %>/reviews/new">口コミを追加する</a></button>
+    <div class="card mt-3">
+      <div class="card-body">
+        <h5 class="card-title">授業名</h5>
+        <p class="card-text"><%= @course.className %></p>
+
+        <h5 class="card-title">教師名</h5>
+        <p class="card-text"><%= @course.teacher %></p>
+
+        <h5 class="card-title">開講学年</h5>
+        <p class="card-text"><%= @course.grade %></p>
+
+        <h5 class="card-title">開講曜日</h5>
+        <p class="card-text"><%= @course.week %></p>
+
+        <h5 class="card-title">開講時限</h5>
+        <p class="card-text"><%= @course.time %></p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

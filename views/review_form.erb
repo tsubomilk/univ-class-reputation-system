@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Class Review</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+     <div class="container mt-5">
+    <h1>Post Review</h1>
+    <form action="/submit_survey" method="post">
+      <!-- 各種アンケート項目 -->
+      <!-- 例: ドロップ率 -->
+      <div class="form-group">
+        <label for="dropRate">課題の多さ</label>
+        <div>
+          <input type="radio" name="groupWork" value="true" id="groupWorkYes">
+          <label for="groupWorkYes">多い</label>
+          <input type="radio" name="groupWork" value="false" id="groupWorkNo">
+          <label for="groupWorkNo">普通</label>
+          <input type="radio" name="groupWork" value="true" id="groupWorkYes">
+          <label for="groupWorkYes">少ない</label>
+        </div>
+      </div>
+
+      <!-- 負荷 -->
+      <div class="form-group">
+        <label for="workload">負荷（週の時間数）</label>
+        <input type="number" name="workload" id="workload" class="form-control">
+      </div>
+
+      <!-- グループワークの有無 -->
+      <div class="form-group">
+        <label for="groupWork">グループワークの有無</label>
+        <div>
+          <input type="radio" name="groupWork" value="true" id="groupWorkYes">
+          <label for="groupWorkYes">あり</label>
+          <input type="radio" name="groupWork" value="false" id="groupWorkNo">
+          <label for="groupWorkNo">なし</label>
+        </div>
+      </div>
+
+      <!-- テストの有無 -->
+      <div class="form-group">
+        <label for="hasTests">テストの有無</label>
+        <div>
+          <input type="radio" name="hasTests" value="true" id="hasTestsYes">
+          <label for="hasTestsYes">あり</label>
+          <input type="radio" name="hasTests" value="false" id="hasTestsNo">
+          <label for="hasTestsNo">なし</label>
+        </div>
+      </div>
+
+      <!-- その他コメント -->
+      <div class="form-group">
+        <label for="otherComments">その他コメント</label>
+        <textarea name="otherComments" id="otherComments" class="form-control"></textarea>
+      </div>
+
+      <!-- 送信ボタン -->
+      <button type="submit" class="btn btn-primary">送信</button>
+    </form>
+  </div>
+</body>
+</html>

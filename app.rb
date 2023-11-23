@@ -6,13 +6,6 @@ require "./models"
 enable :sessions
 
 
-DUMMY_DATA = [
-  { name: 'Alice', age: 30 },
-  { name: 'Bob', age: 25 },
-  { name: 'Carol', age: 35 }
-]
-
-
 helpers do
     def current_user
         User.find_by(id: session[:user])
@@ -26,16 +19,17 @@ before "/tasks" do
 end
 
 get "/" do
-    @lists = List.all
-    if current_user.nil?
-        @tasks = Task.none
-    elsif params[:list].nil? then
-        @tasks = current_user.tasks
-    else
-        @tasks = List.find(params[:list]).tasks.where(user_id: current_user.id)
-    end
+    # @lists = List.all
+    # if current_user.nil?
+    #     @tasks = Task.none
+    # elsif params[:list].nil? then
+    #     @tasks = current_user.tasks
+    # else
+    #     @tasks = List.find(params[:list]).tasks.where(user_id: current_user.id)
+    # end
     # puts @tasks
-    erb :search
+    @courses = Course.all
+    erb :index
 end
 
 get "/signup" do
@@ -60,7 +54,8 @@ get "/signin" do
 end
 
 post "/signin" do
-    user = User.find_by(name :params[:name])
+    user = User.find_by(name: params[:name])
+
     if user && user.authenticate(params[:password])
         session[:user] = user.id
     end
@@ -73,7 +68,8 @@ post "/signout" do
 end
 
 get "/signout" do
-    erb :signup
+    session[:user] = nil
+    redirect "/"
 end
 
 post "/search" do
@@ -86,19 +82,55 @@ get "/results" do
     erb :results
 end
 
-get "/tasks/new" do
+
+get "/courses/new" do
     erb :new
 end
 
-post "/tasks" do
-    list = List.find(params[:list])
-    current_user.tasks.create(
-        title: params[:title],
-        due_date: Date.parse(params[:due_date]),
-        list_id: list.id
-    )
+
+post "/courses" do
+  # フォームデータから正しく値を取得する
+  className = params[:className]
+  teacher = params[:teacher]
+  grade = params[:grade]
+  week = params[:week]
+  time = params[:time]
+
+  # Courseオブジェクトを作成して保存
+  course = Course.create(
+    className: className,
+    teacher: teacher,
+    grade: grade,
+    week: week,
+    time: time
+  )
+
+  if course.persisted?
+    # コースが正常に保存された場合
     redirect "/"
+  else
+    # Courseの保存に失敗した場合の処理
+    flash[:error] = "コースの保存に失敗しました。"
+    redirect "/"
+  end
 end
+
+get "/courses/:id" do
+    @course = Course.find(params[:id])
+    erb :detail
+end
+
+# 口コミを追加するルート
+post '/courses/:id/reviews' do
+  course = Course.find(params[:id])
+  course.reviews.create(params[:review])
+  redirect back
+end
+
+get '/courses/:id/reviews/new' do
+    erb :review_form
+end
+
 
 post "/tasks/:id/done" do
     task = Task.find(params[:id])
