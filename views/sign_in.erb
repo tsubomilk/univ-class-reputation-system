@@ -1,13 +1,37 @@
-<div class="container">
-    <form action="/signin" method="post">
-        <div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>授業口コミシステムへようこそ！</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center mb-4">授業口コミシステムへようこそ！</h5>
+        <form action="/signin" method="post">
+          <div class="form-group">
+            <label for="inputID">名前</label>
+            <input class="form-control" name="name" placeholder="名前を入力"><br>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">PASSWORD</label>
+            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="パスワードを入力">
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary mb-2">ログイン</button>
             <div>
-                <input class="form-control" name="name" placeholder="名前を入力"><br>
-                <input class="form-control" name="password" type="password" placeholder="パスワードを入力"><br>
+              <a href="/signup">会員登録がお済みでない場合</a>
             </div>
-            <div>
-                <input class="form-control" type="submit" value="ログイン">
-            </div>
-        </div>
-    </form>
-</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

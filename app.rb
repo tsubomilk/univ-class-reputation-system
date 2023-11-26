@@ -28,8 +28,13 @@ get "/" do
     #     @tasks = List.find(params[:list]).tasks.where(user_id: current_user.id)
     # end
     # puts @tasks
+    if session[:user].nil?
+    redirect "/signin"
+    else
+    
     @courses = Course.all
     erb :index
+    end
 end
 
 get "/signup" do
@@ -72,21 +77,27 @@ get "/signout" do
     redirect "/"
 end
 
-post "/search" do
-    @results = DUMMY_DATA.select { |item| item[:name].downcase.include?(params[:query].downcase) }
-    erb :results
-    redirect "/results"
+post '/search' do
+  # フォームから送信された検索クォリを取得
+  search_query = params[:query]
+
+  # 検索クォリに基づいてCourseテーブルを検索
+  # カラム名に大文字が含まれている場合、ダブルクォートで囲む
+  @courses = Course.where('"className" LIKE ?', "%#{search_query}%")
+
+  # 検索結果を表示するためのERBファイルをレンダリング
+  erb :results
 end
 
-get "/results" do
-    erb :results
-end
 
+
+# get "/results" do
+#     erb :results
+# end
 
 get "/courses/new" do
     erb :new
 end
-
 
 post "/courses" do
   # フォームデータから正しく値を取得する
@@ -116,7 +127,9 @@ post "/courses" do
 end
 
 get "/courses/:id" do
+    @courseId = params[:id]
     @course = Course.find(params[:id])
+    @reviews = Review.where(courseId: @courseId)
     erb :detail
 end
 
@@ -124,64 +137,49 @@ end
 post '/courses/:id/reviews' do
   course = Course.find(params[:id])
   course.reviews.create(params[:review])
+#   @courseId = params[:courseId]
   redirect back
 end
 
 get '/courses/:id/reviews/new' do
+    @courseId = params[:id]
+  course = Course.find(params[:id])
+  @courseName = course.className  # className 属性を @courseName に代入
     erb :review_form
 end
 
+post '/check_form' do
+  # Store the form data in a hash
+  @form_data = {
+    quantity: params[:quantity],
+    reference: params[:reference],
+    groupWork: params[:groupWork],
+    hasTests: params[:hasTests],
+    hasReports: params[:hasReports],
+    hasProgramming: params[:hasProgramming],
+    targetAudience: params[:targetAudience],
+    otherComments: params[:otherComments],
+    rating: params[:rating],
+    courseId: params[:courseId]
+  }
 
-post "/tasks/:id/done" do
-    task = Task.find(params[:id])
-    task.completed = true
-    task.save
-    redirect "/"
+  erb :check_form
 end
 
-get "/tasks/:id/star" do
-    task = Task.find(params[:id])
-    task.star = !task.star
-    task.save
-    redirect "/"
-end
-
-post "/tasks/:id/delete" do
-    task = Task.find(params[:id])
-    task.destroy
-    redirect "/"
-end
-
-get "/tasks/:id/edit" do
-    @task=Task.find(params[:id])
-    erb :edit
-end
-
-post "/tasks/:id" do
-    task = Task.find(params[:id])
-    date = params[:due_date].split("-")
-    lsit = List.find(params[:list])
+post '/submit_form' do
+    review = Review.create(
+        dropRate: params[:quantity],
+        workload: params[:reference] == 'true',
+        groupWork: params[:groupWork] == 'true',
+        hasTests: params[:hasTests] == 'true',
+        hasReports: params[:hasReports] == 'true',
+        hasProgramming: params[:hasProgramming] == 'true',
+        targetAudience: params[:targetAudience],
+        otherComments: params[:otherComments],
+        likes: params[:rating],
+        courseId: params[:courseId]  # コースIDを保存
+      )
     
-    if Date.valid_date?(date[0].to_i,date[1].to_i,date[2].to_i)
-        task.title = params[:title]
-        task.due_date = Date.parse(params[:due_date])
-        task.list_id = list.id
-        task.save
-        redirect "/"
-    else
-        redirect "/tasks/#{task.id}/edit"
-    end
+    redirect "/"
+      
 end
-
-get "/tasks/over" do
-    @lists = List.all
-    @tasks = current_user.tasks.where("due_date < ?",Date.today).where(completed: [nil,false])
-    erb :index
-end
-
-get "/tasks/done" do
-    @lists = List.all
-    @tasks = current_user.tasks.where(completed: true)
-    erb :index
-end
-

@@ -32,8 +32,6 @@ end
 # models/review.rb
 
 class Review < ActiveRecord::Base
-  validates :title, 
-  presence: true
   belongs_to :user
 end
 

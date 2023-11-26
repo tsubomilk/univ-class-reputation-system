@@ -1,11 +1,47 @@
-<div class="container">
-  <% if @results.empty? %>
-    <p>No results found</p>
-  <% else %>
-    <ul>
-      <% @results.each do |result| %>
-        <li><%= result[:name] %> (Age: <%= result[:age] %>)</li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    		<div class="row">
+			<div class="container card">
+			  <h1>Search Class</h1>
+			  <form action="/search" method="post" class="form-inline my-2 my-lg-0">
+			    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="query">
+			    <button class="btn btn-outline-success my-2" type="submit">Search</button>
+			  </form>
+			</div>
+		</div>
+		
+    <h1>Search Results</h1>
+    <% if @courses.any? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Course ID</th>
+            <th>Class Name</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @courses.each do |course| %>
+            <tr>
+              <td><%= course.id %></td>
+              <td><%= course.className %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No courses found.</p>
+    <% end %>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

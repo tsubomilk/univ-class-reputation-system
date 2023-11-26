@@ -7,6 +7,7 @@
 </head>
 <body>
 	<div class="container mt-5">
+	  <p>Course ID: <%= @courseId %></p>
     <h1 class="display-4"><%= @course.className %></h1>
     <button type="submit" class="btn btn-light"><a href="/courses/<%= @course.id %>/reviews/new">口コミを追加する</a></button>
     <div class="card mt-3">
@@ -27,7 +28,46 @@
         <p class="card-text"><%= @course.time %></p>
       </div>
     </div>
-
+  </div>
+  
+    <div class="container mt-5">
+    <h1>Reviews List</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Review ID</th>
+          <th scope="col">Course ID</th>
+          <th scope="col">User ID</th>
+          <th scope="col">Likes</th>
+          <th scope="col">Drop Rate</th>
+          <th scope="col">Workload</th>
+          <th scope="col">Group Work</th>
+          <th scope="col">Has Tests</th>
+          <th scope="col">Has Reports</th>
+          <th scope="col">Has Programming</th>
+          <th scope="col">Target Audience</th>
+          <th scope="col">Other Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td><%= review.reviewId %></td>
+            <td><%= review.courseId %></td>
+            <td><%= review.userId %></td>
+            <td><%= review.likes %></td>
+            <td><%= review.dropRate %></td>
+            <td><%= review.workload %></td>
+            <td><%= review.groupWork ? 'Yes' : 'No' %></td>
+            <td><%= review.hasTests ? 'Yes' : 'No' %></td>
+            <td><%= review.hasReports ? 'Yes' : 'No' %></td>
+            <td><%= review.hasProgramming ? 'Yes' : 'No' %></td>
+            <td><%= review.targetAudience %></td>
+            <td><%= review.otherComments %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </body>
 </html>

@@ -9,3 +9,33 @@ a{
     text-decoration: none;
     color: black;
 }
+
+  .star-rating {
+    direction: rtl; /* Reverse the order of the inline elements (stars) */
+    font-size: 0;
+  }
+  .star-rating input[type="radio"] {
+    display: none; /* Hide the radio buttons */
+  }
+  .star-rating label {
+    font-size: 2rem;
+    padding: 0 5px;
+    cursor: pointer;
+    transition: transform 0.2s; /* Smooth transition for scaling effect */
+    color: #ccc; /* Default star color */
+  }
+  .star-rating label::before {
+    content: "☆"; /* Default empty star */
+    color: #ccc; /* Default star color, same as label */
+  }
+  .star-rating label:hover,
+  .star-rating label:hover ~ label,
+  .star-rating input[type="radio"]:checked ~ label::before {
+    color: #F4B65D; /* Make the stars yellow on hover/checked */
+  }
+  .star-rating input[type="radio"]:checked ~ label::before {
+    content: "★"; /* Filled star */
+  }
+  .star-rating input[type="radio"]:checked + label {
+    transform: scale(1.3); /* Scale the selected star slightly */
+  }
