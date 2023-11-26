@@ -8,7 +8,7 @@ development:
 
 production:
   <<: *default
-  host: s_original_ime8_user
+  host: dpg-clhoa26g1b2c73ag919g-a
   database: s_original_ime8
   username: s_original_ime8_user
   password: UgtVaPAkDdvc9MbsoQ5IImzgnvRD5m3d
