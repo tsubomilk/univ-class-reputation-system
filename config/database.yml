@@ -1,14 +1,14 @@
 default_env: &default
   adapter: postgresql
   encoding: unicode
-  database: s_original
+  database: s_todo
 
 development:
   <<: *default
 
 production:
   <<: *default
-  host: dpg-clhoa26g1b2c73ag919g-a
-  database: s_original_ime8
-  username: s_original_ime8_user
-  password: UgtVaPAkDdvc9MbsoQ5IImzgnvRD5m3d
+  host: dpg-clhom3fjc5ks73endrb0-a
+  database: s_todo
+  username: s_todo_user
+  password: XYKyPcDw9Yz3JSj9ZeGd9AHCMXh9REof
