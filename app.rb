@@ -90,11 +90,6 @@ post '/search' do
 end
 
 
-
-# get "/results" do
-#     erb :results
-# end
-
 get "/courses/new" do
     erb :new
 end
