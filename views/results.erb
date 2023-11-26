@@ -7,16 +7,102 @@
 </head>
 <body>
   <div class="container mt-5">
-    		<div class="row">
-			<div class="container card">
-			  <h1>Search Class</h1>
-			  <form action="/search" method="post" class="form-inline my-2 my-lg-0">
-			    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="query">
-			    <button class="btn btn-outline-success my-2" type="submit">Search</button>
-			  </form>
-			</div>
-		</div>
-		
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">Search Class</h1>
+          <form action="/search" method="post">
+    
+            <div class="form-group">
+              <label for="general_search">なんでも検索</label>
+              <input id="general_search" class="form-control mb-2" type="search" placeholder="キーワードを入力" aria-label="General Search" name="general_search">
+            </div>
+    
+            <div class="form-group">
+              <label for="className">授業名</label>
+              <input id="className" class="form-control mb-2" type="text" placeholder="授業名を入力" aria-label="ClassName" name="className">
+            </div>
+    
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="teacher">教授</label>
+                  <select id="teacher" class="form-control mb-2" name="teacher">
+                    <!-- 教授のオプション -->
+                    <option value="">教授を選んでください</option>
+                    <option value="岩井将行">岩井将行</option>
+                    <option value="池田雄介">池田雄介</option>
+                    <option value="大野誠寛">大野誠寛</option>
+                    <option value="中島克人">中島克人</option>
+                    <option value="川澄正史">川澄正史</option>
+                    <option value="鉄谷信二">鉄谷信二</option>
+                    <option value="竜田藤男">竜田藤男</option>
+                    <option value="寺田真敏">寺田真敏</option>
+                    <option value="井ノ上寛人">井ノ上寛人</option>
+                  </select>
+                </div>
+              </div>
+    
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="grade">学年</label>
+                  <select id="grade" class="form-control mb-2" name="grade">
+                    <!-- 学年のオプション -->
+                    <option value="">学年を選んでください</option>
+                    <option value="1">1年</option>
+                    <option value="2">2年</option>
+                    <option value="3">3年</option>
+                    <option value="4">4年</option>
+                  </select>
+                </div>
+              </div>
+    
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="week">曜日</label>
+                  <select id="week" class="form-control mb-2" name="week">
+                    <!-- 曜日のオプション -->
+                      <option value="">曜日を選んでください</option>
+                      <option value="月曜日">月曜日</option>
+                      <option value="火曜日">火曜日</option>
+                      <option value="水曜日">水曜日</option>
+                      <option value="木曜日">木曜日</option>
+                      <option value="金曜日">金曜日</option>
+                      <option value="土曜日">土曜日</option>
+                      <option value="日曜日">日曜日</option>
+                  </select>
+                </div>
+              </div>
+    
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="time">時限</label>
+                  <select id="time" class="form-control mb-2" name="time">
+                    <!-- 時限のオプション -->
+                    <option value="">時限を選んでください</option>
+                    <option value="1">1限</option>
+                    <option value="2">2限</option>
+                    <option value="3">3限</option>
+                    <option value="4">4限</option>
+                    <option value="5">5限</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+    
+            <div class="form-group row">
+              <div class="col text-center">
+                <button class="btn btn-outline-success px-4" type="submit">検索</button>
+              </div>
+            </div>
+    
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+	<div class="container mt-5">
     <h1>Search Results</h1>
     <% if @courses.any? %>
       <table class="table">
@@ -39,6 +125,7 @@
     <% else %>
       <p>No courses found.</p>
     <% end %>
+  </div>    
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

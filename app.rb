@@ -78,17 +78,34 @@ get "/signout" do
 end
 
 post '/search' do
-  # フォームから送信された検索クォリを取得
-  search_query = params[:query]
+  # フォームから送信された検索クエリを取得
+  general_search = params[:general_search]
+  class_name = params[:className]
+  teacher = params[:teacher]
+  grade = params[:grade]
+  week = params[:week]
+  time = params[:time]
 
-  # 検索クォリに基づいてCourseテーブルを検索
-  # カラム名に大文字が含まれている場合、ダブルクォートで囲む
-  @courses = Course.where('"className" LIKE ?', "%#{search_query}%")
+  # データベース検索用のクエリを組み立てる
+  query = Course.all
+  query = query.where("\"className\" LIKE ?", "%#{general_search}%") unless general_search.to_s.strip.empty?
+  query = query.where("\"className\" LIKE ?", "%#{class_name}%") unless class_name.to_s.strip.empty?
+  query = query.where(teacher: teacher) unless teacher.to_s.strip.empty?
+  query = query.where(grade: grade) unless grade.to_s.strip.empty?
+  query = query.where(week: week) unless week.to_s.strip.empty?
+  query = query.where(time: time) unless time.to_s.strip.empty?
 
-  # 検索結果を表示するためのERBファイルをレンダリング
-  erb :results
+  # 検索結果をインスタンス変数にセット
+  @courses = query.to_a
+
+  # 検索結果がない場合はルートパスにリダイレクト
+  if @courses.empty?
+    redirect to('/')
+  else
+    # 検索結果を表示するためのERBファイルをレンダリング
+    erb :results
+  end
 end
-
 
 get "/courses/new" do
     erb :new
@@ -175,6 +192,6 @@ post '/submit_form' do
         courseId: params[:courseId]  # コースIDを保存
       )
     
-    redirect "/"
+  redirect "/courses/#{params[:courseId]}"
       
 end

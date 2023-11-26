@@ -1,18 +1,79 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta charset="UTF-8">
-	<title>Class Review</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title>Class Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<div>
-    <form action="/courses" method="post">
-        <input type="text" name="className" placeholder="授業名">
-        <input type="text" name="teacher" placeholder="教師名">
-        <input type="text" name="grade" placeholder="開講学年">
-        <input type="text" name="week" placeholder="開講曜日">
-        <input type="text" name="time" placeholder="開講時限">
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">授業登録</h5>
+                <form action="/courses" method="post">
 
-        <input type="submit" value="登録">
-    </form>
-</div>
+                    <div class="form-group">
+                        <label for="className">授業名</label>
+                        <input id="className" class="form-control mb-2" type="text" placeholder="授業名を入力" aria-label="ClassName" name="className">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacher">教授</label>
+                        <select id="teacher" class="form-control mb-2" name="teacher">
+                            <option value="">教授を選んでください</option>
+                            <option value="岩井将行">岩井将行</option>
+                            <option value="池田雄介">池田雄介</option>
+                            <option value="大野誠寛">大野誠寛</option>
+                            <option value="中島克人">中島克人</option>
+                            <option value="川澄正史">川澄正史</option>
+                            <option value="鉄谷信二">鉄谷信二</option>
+                            <option value="竜田藤男">竜田藤男</option>
+                            <option value="寺田真敏">寺田真敏</option>
+                            <option value="井ノ上寛人">井ノ上寛人</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grade">学年</label>
+                        <select id="grade" class="form-control mb-2" name="grade">
+                            <option value="">学年を選んでください</option>
+                            <option value="1">1年</option>
+                            <option value="2">2年</option>
+                            <option value="3">3年</option>
+                            <option value="4">4年</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="week">曜日</label>
+                        <select id="week" class="form-control mb-2" name="week">
+                            <option value="">曜日を選んでください</option>
+                            <option value="月曜日">月曜日</option>
+                            <option value="火曜日">火曜日</option>
+                            <option value="水曜日">水曜日</option>
+                            <option value="木曜日">木曜日</option>
+                            <option value="金曜日">金曜日</option>
+                            <option value="土曜日">土曜日</option>
+                            <option value="日曜日">日曜日</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time">時限</label>
+                        <select id="time" class="form-control mb-2" name="time">
+                            <option value="">時限を選んでください</option>
+                            <option value="1">1限</option>
+                            <option value="2">2限</option>
+                            <option value="3">3限</option>
+                            <option value="4">4限</option>
+                            <option value="5">5限</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">登録</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
