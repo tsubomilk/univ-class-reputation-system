@@ -78,6 +78,14 @@ get "/signout" do
 end
 
 post '/search' do
+  # 検索フォームから送信されたデータをセッション変数に保存
+  session[:search_query] = params[:general_search]
+  session[:class_name] = params[:className]
+  session[:teacher] = params[:teacher]
+  session[:grade] = params[:grade]
+  session[:week] = params[:week]
+  session[:time] = params[:time]
+  
   # フォームから送信された検索クエリを取得
   general_search = params[:general_search]
   class_name = params[:className]
@@ -98,14 +106,30 @@ post '/search' do
   # 検索結果をインスタンス変数にセット
   @courses = query.to_a
 
-  # 検索結果がない場合はルートパスにリダイレクト
+  # 検索結果がない場合は検索ページにリダイレクトしてメッセージを表示
   if @courses.empty?
-    redirect to('/')
+    session[:no_results] = true
+    redirect '/search'
   else
-    # 検索結果を表示するためのERBファイルをレンダリング
+    # 検索結果がある場合はそのまま結果を表示
+    session[:no_results] = false
     erb :results
   end
+  
 end
+
+get '/search' do
+  # @courses が nil の場合は空の配列を設定
+  @courses = [] if @courses.nil?
+
+  if session[:no_results]
+    @message = '検索条件に当てはまるものが見つかりませんでした。'
+    session[:no_results] = false # メッセージを表示した後はフラグをクリア
+  end
+
+  erb :results
+end
+
 
 get "/courses/new" do
     erb :new

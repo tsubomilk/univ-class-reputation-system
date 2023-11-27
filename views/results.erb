@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Search Results</title>
+  	<link rel="stylesheet" type="text/css" href="./style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -15,12 +16,12 @@
     
             <div class="form-group">
               <label for="general_search">なんでも検索</label>
-              <input id="general_search" class="form-control mb-2" type="search" placeholder="キーワードを入力" aria-label="General Search" name="general_search">
+              <input id="general_search" class="form-control mb-2" type="search" placeholder="キーワードを入力" aria-label="General Search" name="general_search" value="<%= session[:general_search].to_s %>">
             </div>
     
             <div class="form-group">
               <label for="className">授業名</label>
-              <input id="className" class="form-control mb-2" type="text" placeholder="授業名を入力" aria-label="ClassName" name="className">
+              <input id="className" class="form-control mb-2" type="text" placeholder="授業名を入力" aria-label="ClassName" name="className" value="<%= session[:className] || '' %>">
             </div>
     
             <div class="row">
@@ -28,17 +29,11 @@
                 <div class="form-group">
                   <label for="teacher">教授</label>
                   <select id="teacher" class="form-control mb-2" name="teacher">
-                    <!-- 教授のオプション -->
                     <option value="">教授を選んでください</option>
-                    <option value="岩井将行">岩井将行</option>
-                    <option value="池田雄介">池田雄介</option>
-                    <option value="大野誠寛">大野誠寛</option>
-                    <option value="中島克人">中島克人</option>
-                    <option value="川澄正史">川澄正史</option>
-                    <option value="鉄谷信二">鉄谷信二</option>
-                    <option value="竜田藤男">竜田藤男</option>
-                    <option value="寺田真敏">寺田真敏</option>
-                    <option value="井ノ上寛人">井ノ上寛人</option>
+                    <% ["岩井将行", "池田雄介", "大野誠寛", "中島克人", "川澄正史", "鉄谷信二", "竜田藤男", "寺田真敏", "井ノ上寛人"].each do |professor| %>
+                      <% selected = "selected" if session[:teacher] == professor %>
+                      <option value="<%= professor %>" <%= selected %>><%= professor %></option>
+                    <% end %>
                   </select>
                 </div>
               </div>
@@ -47,12 +42,11 @@
                 <div class="form-group">
                   <label for="grade">学年</label>
                   <select id="grade" class="form-control mb-2" name="grade">
-                    <!-- 学年のオプション -->
-                    <option value="">学年を選んでください</option>
-                    <option value="1">1年</option>
-                    <option value="2">2年</option>
-                    <option value="3">3年</option>
-                    <option value="4">4年</option>
+                    <option value="" <%='selected' if session[:grade].to_s.empty?%>>学年を選んでください</option>
+                    <option value="1" <%='selected' if session[:grade].to_s == '1'%>>1年</option>
+                    <option value="2" <%='selected' if session[:grade].to_s == '2'%>>2年</option>
+                    <option value="3" <%='selected' if session[:grade].to_s == '3'%>>3年</option>
+                    <option value="4" <%='selected' if session[:grade].to_s == '4'%>>4年</option>
                   </select>
                 </div>
               </div>
@@ -61,15 +55,10 @@
                 <div class="form-group">
                   <label for="week">曜日</label>
                   <select id="week" class="form-control mb-2" name="week">
-                    <!-- 曜日のオプション -->
-                      <option value="">曜日を選んでください</option>
-                      <option value="月曜日">月曜日</option>
-                      <option value="火曜日">火曜日</option>
-                      <option value="水曜日">水曜日</option>
-                      <option value="木曜日">木曜日</option>
-                      <option value="金曜日">金曜日</option>
-                      <option value="土曜日">土曜日</option>
-                      <option value="日曜日">日曜日</option>
+                    <option value="" <%='selected' if session[:week].to_s.empty?%>>曜日を選んでください</option>
+                    <% ["月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日", "日曜日"].each do |day| %>
+                      <option value="<%= day %>" <%='selected' if session[:week] == day %>><%= day %></option>
+                    <% end %>
                   </select>
                 </div>
               </div>
@@ -78,13 +67,10 @@
                 <div class="form-group">
                   <label for="time">時限</label>
                   <select id="time" class="form-control mb-2" name="time">
-                    <!-- 時限のオプション -->
-                    <option value="">時限を選んでください</option>
-                    <option value="1">1限</option>
-                    <option value="2">2限</option>
-                    <option value="3">3限</option>
-                    <option value="4">4限</option>
-                    <option value="5">5限</option>
+                    <option value="" <%='selected' if session[:time].to_s.empty?%>>時限を選んでください</option>
+                    <% (1..6).each do |period| %>
+                      <option value="<%= period %>" <%='selected' if session[:time].to_s == period.to_s %>><%= period %>限</option>
+                    <% end %>
                   </select>
                 </div>
               </div>
@@ -104,31 +90,57 @@
 
 	<div class="container mt-5">
     <h1>Search Results</h1>
+
+    
     <% if @courses.any? %>
       <table class="table">
         <thead>
           <tr>
             <th>Course ID</th>
             <th>Class Name</th>
-            <th>Details</th>
+            <th>Teacher</th>
+            <th>Grade</th>
+            <th>Week</th>
+            <th>Time</th>
           </tr>
         </thead>
         <tbody>
           <% @courses.each do |course| %>
-            <tr>
+            <tr data-href="/courses/<%= course.id %>" class="clickable-row">
               <td><%= course.id %></td>
               <td><%= course.className %></td>
+              <td><%= course.teacher %></td>
+              <td><%= course.grade %></td>
+              <td><%= course.week %></td>
+              <td><%= course.time %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+
     <% else %>
-      <p>No courses found.</p>
+      <% if @message %>
+      <div class="alert alert-warning">
+        <%= @message %>
+      </div>
+      <% end %>
     <% end %>
   </div>    
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+        // ドキュメントの読み込みが完了したら、イベントリスナーを追加
+        document.addEventListener('DOMContentLoaded', function() {
+          // "clickable-row"クラスを持つすべての行に対してイベントリスナーを設定
+          document.querySelectorAll('.clickable-row').forEach(function(row) {
+            row.addEventListener('click', function() {
+              window.location.href = this.dataset.href;
+            });
+          });
+        });
+        
+  </script>
 </body>
 </html>
