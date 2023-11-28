@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_14_095004) do
+ActiveRecord::Schema.define(version: 2023_11_27_052651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2023_11_14_095004) do
     t.string "courseId"
     t.string "userId"
     t.integer "likes"
-    t.float "dropRate"
-    t.integer "workload"
+    t.string "dropRate"
+    t.boolean "workload"
     t.boolean "groupWork"
     t.boolean "hasTests"
     t.boolean "hasReports"

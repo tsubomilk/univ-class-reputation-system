@@ -166,6 +166,13 @@ get "/courses/:id" do
     @courseId = params[:id]
     @course = Course.find(params[:id])
     @reviews = Review.where(courseId: @courseId)
+    
+  if @reviews.any?
+    @average_rating = @reviews.average(:likes).round(1)
+  else
+    @average_rating = "No reviews yet"
+  end
+
     erb :detail
 end
 

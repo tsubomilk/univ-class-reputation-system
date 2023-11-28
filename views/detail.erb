@@ -10,26 +10,62 @@
 	  <p>Course ID: <%= @courseId %></p>
     <h1 class="display-4"><%= @course.className %></h1>
     <button type="submit" class="btn btn-light"><a href="/courses/<%= @course.id %>/reviews/new">口コミを追加する</a></button>
-    <div class="card mt-3">
-      <div class="card-body">
-        <h5 class="card-title">授業名</h5>
-        <p class="card-text"><%= @course.className %></p>
-
-        <h5 class="card-title">教師名</h5>
-        <p class="card-text"><%= @course.teacher %></p>
-
-        <h5 class="card-title">開講学年</h5>
-        <p class="card-text"><%= @course.grade %></p>
-
-        <h5 class="card-title">開講曜日</h5>
-        <p class="card-text"><%= @course.week %></p>
-
-        <h5 class="card-title">開講時限</h5>
-        <p class="card-text"><%= @course.time %></p>
+      <div class="card card-body">
+        <div class="row">
+          <!-- 授業名のタイトルと値を横並びにする -->
+          <div class="col-sm-3">
+            <h5 class="card-title">授業名</h5>
+          </div>
+          <div class="col-sm-9">
+            <p class="card-text"><%= @course.className %></p>
+          </div>
+        </div>
+        <!-- 他の情報も同様に行に追加 -->
+        <div class="row">
+          <div class="col-sm-3">
+            <h5 class="card-title">教師名</h5>
+          </div>
+          <div class="col-sm-9">
+            <p class="card-text"><%= @course.teacher %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <h5 class="card-title">開講学年</h5>
+          </div>
+          <div class="col-sm-9">
+            <p class="card-text"><%= @course.grade %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <h5 class="card-title">開講曜日</h5>
+          </div>
+          <div class="col-sm-9">
+            <p class="card-text"><%= @course.week %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <h5 class="card-title">開講時限</h5>
+          </div>
+          <div class="col-sm-9">
+            <p class="card-text"><%= @course.time %></p>
+          </div>
+        </div>
       </div>
-    </div>
+      </div>
   </div>
   
+    <div class="container mt-3 text-center">
+      <h3>口コミの総合評価</h3>
+      <% if @reviews.any? %>
+        <p>平均評価: <%= @average_rating %> ★</p>
+      <% else %>
+        <p><%= @average_rating %></p>
+      <% end %>
+    </div>
+
     <div id ="#reviews"class="container mt-5">
     <h1>Reviews List</h1>
     <table class="table">

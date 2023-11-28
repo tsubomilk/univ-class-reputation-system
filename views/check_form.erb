@@ -16,10 +16,10 @@
 
       <div class="form-group">
         <label>課題の量:</label>
-        <p><%= @form_data[:quantity] == "true" ? "多い" : @form_data[:quantity] == "false" ? "普通" : "少ない" %></p>
+        <p><%= @form_data[:quantity] %></p>
         <input type="hidden" name="quantity" value="<%= @form_data[:quantity] %>">
       </div>
-      
+
       <div class="form-group">
         <label>授業資料の有無:</label>
         <p><%= @form_data[:reference] == "true" ? "あり" : "なし" %></p>

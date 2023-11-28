@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Class Review</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<div class="container mt-5">
@@ -112,28 +112,31 @@
 </div>
 
     
-	<div class="container mt-5">
-
-		    <h1>Class All</h1>
-		    <table class="table">
-		      <thead>
-		        <tr>
-		          <th scope="col">Class Name</th>
-		          <th scope="col">Details</th>
-		          <th scope="col">Review</th>
-		        </tr>
-		      </thead>
-		      <tbody>
-		      	<% @courses.each do |course| %>
-		        <tr>
-		          <td><a href="/courses/<%= course.id %>"><%= course.className %></a></td>
-		          <td><button class="btn btn-light"><a href="/courses/<%= course.id %>">Detail</a></button></td>
-		          <td><button class="btn btn-light"><a href="/courses/<%= course.id %>#reviews">Review</a></button></td>
-		        </tr>
-				<% end %>
-		      </tbody>
-		    </table>
-    </div>
+        <div class="container mt-5">
+          <h1>Class All</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Class Name</th>
+                <th scope="col">Teacher</th>
+                <th scope="col">Grade</th>
+                <th scope="col">Week</th>
+                <th scope="col">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @courses.each do |course| %>
+              <tr onclick="location.href='/courses/<%= course.id %>'" style="cursor:pointer;">
+                <td><%= course.className %></td>
+                <td><%= course.teacher %></td>
+                <td><%= course.grade %></td>
+                <td><%= course.week %></td>
+                <td><%= course.time %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
 	</div>
 </body>
 </html>
