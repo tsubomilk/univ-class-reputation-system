@@ -40,6 +40,7 @@ body {
 a{
     text-decoration: none;
     color: black;
+    font-family: 'HiraMaruProN-W4-AlphaNum', sans-serif;
 }
 
 .card{

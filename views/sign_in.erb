@@ -4,33 +4,44 @@
   <meta charset="UTF-8">
   <title>授業口コミシステムへようこそ！</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-
-  <div class="container mt-5">
-    <h5 class="card-title text-center mb-4">授業口コミシステムへようこそ！</h5>
-    <div class="card">
-      <div class="card-body">
-
-        <form action="/signin" method="post">
-          <div class="form-group">
-            <label for="inputID">名前</label>
-            <input class="form-control" name="name" placeholder="名前を入力"><br>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="container">
+    <h2 class="card-title text-center mb-4">授業口コミシステムへようこそ！</h2>
+    <div class="card" style="max-width: 650px; margin: auto; display: flex; align-items: center; height: 100%;"> <!-- ここにフレックスプロパティを追加 -->
+      <div class="card-body w-100"> <!-- widthを100%に設定 -->
+      <form action="/signin" method="post" class="d-flex flex-column justify-content-center h-100">
+        <div class="form-all pr-5 pl-5">
+        <div class="form-group row">
+          <label for="inputID" class="col-sm-3 col-form-label">名前</label>
+          <div class="ml-auto col-sm-6"> <!-- ml-autoを追加して右寄せに -->
+            <input type="text" class="form-control" id="inputID" name="name" placeholder="名前を入力">
           </div>
-          <div class="form-group">
-            <label for="inputPassword">PASSWORD</label>
+        </div>
+      
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-3 col-form-label">PASSWORD</label>
+          <div class="ml-auto col-sm-6"> <!-- ml-autoを追加して右寄せに -->
             <input type="password" class="form-control" id="inputPassword" name="password" placeholder="パスワードを入力">
           </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary mb-2">ログイン</button>
-            <div>
-              <a href="/signup">会員登録がお済みでない場合</a>
-            </div>
-          </div>
-        </form>
+        </div>
+        </div>
+       
+      
+        <div class="text-center mt-2 mb-auto">
+          <button type="submit" class="btn mb-2">ログイン</button>
+        </div>
+      </form>
+
       </div>
     </div>
+    <div class="text-center mt-3">
+      <a class="test-aline" href="/signup">会員登録がお済みでない場合</a>
+    </div>
   </div>
+</div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
