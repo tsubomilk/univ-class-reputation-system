@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブ対応のためのビューポート設定 -->
   <title>授業口コミシステムへようこそ！</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -9,32 +10,28 @@
 <body>
 <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
   <div class="container">
-    <h2 class="card-title text-center mb-4">授業口コミシステムへようこそ！</h2>
-    <div class="card" style="max-width: 650px; margin: auto; display: flex; align-items: center; height: 100%;"> <!-- ここにフレックスプロパティを追加 -->
-      <div class="card-body w-100"> <!-- widthを100%に設定 -->
-      <form action="/signin" method="post" class="d-flex flex-column justify-content-center h-100">
-        <div class="form-all pr-5 pl-5">
-        <div class="form-group row">
-          <label for="inputID" class="col-sm-3 col-form-label">名前</label>
-          <div class="ml-auto col-sm-6"> <!-- ml-autoを追加して右寄せに -->
-            <input type="text" class="form-control" id="inputID" name="name" placeholder="名前を入力">
+    <h2 class="card-title text-center mb-4">授業口コミシステムへ<span class="break-sm"></span>ようこそ！</h2>
+    <div class="card" style="max-width: 650px; margin: auto; display: flex; align-items: center; height: 100%;">
+      <div class="card-body w-100">
+        <form action="/signin" method="post" class="d-flex flex-column justify-content-center h-100">
+          <div class="form-all px-5">
+            <div class="form-group row">
+              <label for="inputID" class="col-sm-3 col-form-label">名前</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputID" name="name" placeholder="名前を入力">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-3 col-form-label">PASSWORD</label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="パスワードを入力">
+              </div>
+            </div>
           </div>
-        </div>
-      
-        <div class="form-group row">
-          <label for="inputPassword" class="col-sm-3 col-form-label">PASSWORD</label>
-          <div class="ml-auto col-sm-6"> <!-- ml-autoを追加して右寄せに -->
-            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="パスワードを入力">
+          <div class="text-center mt-2 mb-auto">
+            <button type="submit" class="btn mb-2">ログイン</button>
           </div>
-        </div>
-        </div>
-       
-      
-        <div class="text-center mt-2 mb-auto">
-          <button type="submit" class="btn mb-2">ログイン</button>
-        </div>
-      </form>
-
+        </form>
       </div>
     </div>
     <div class="text-center mt-3">
@@ -42,8 +39,8 @@
     </div>
   </div>
 </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

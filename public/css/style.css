@@ -39,7 +39,7 @@ body {
 
 a{
     text-decoration: none;
-    color: black;
+    /*color: black;*/
     font-family: 'HiraMaruProN-W4-AlphaNum', sans-serif;
 }
 
@@ -113,4 +113,8 @@ a{
   color: #0156B3; 
 }
 
-
+  @media (max-width: 768px) { /* Bootstrapのスマホ用ブレークポイント */
+    .break-sm {
+      display: block; /* スマホでの表示時にブロック要素にする */
+    }
+  }

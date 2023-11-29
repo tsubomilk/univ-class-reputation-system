@@ -2,37 +2,46 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブ対応のためのビューポート設定 -->
   <title>授業口コミ新規会員登録</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-  <div class="container mt-5">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title text-center mb-4">授業口コミ新規会員登録</h5>
-        <form action="/signup" method="post">
-          <div class="form-group">
-            <label for="inputID">名前</label>
-        　　<input class="form-control" name="name" placeholder="名前を入力"><br>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="container">
+    <h2 class="card-title text-center mb-4">授業口コミ新規会員登録</h2>
+    <div class="card" style="max-width: 650px; margin: auto; display: flex; align-items: center; height: 100%;">
+      <div class="card-body w-100">
+        <form action="/signup" method="post" class="d-flex flex-column justify-content-center h-100">
+          <div class="form-all px-5">
+            <div class="form-group row">
+              <label for="inputID" class="col-sm-3 col-form-label">名前</label>
+              <div class="col-sm-9"> <!-- サイズ調整と右寄せの削除 -->
+                <input type="text" class="form-control" id="inputID" name="name" placeholder="名前を入力">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-3 col-form-label">PASSWORD</label>
+              <div class="col-sm-9"> <!-- サイズ調整と右寄せの削除 -->
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="パスワードを入力">
+                <input type="password" class="form-control mt-3" name="password_confirmation" placeholder="パスワードをもう一度入力">
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="inputPassword">PASSWORD</label>
-            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="パスワードを入力" required>
-            <input type="password" class="form-control mt-3" name="password_confirmation" type="password" placeholder="パスワードをもう一度入力"><br>
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary mb-2">登録</button>
+          <div class="text-center mt-2 mb-auto">
+            <button type="submit" class="btn mb-2">登録</button>
           </div>
         </form>
-        <div class="text-center">
-          <a href="/signin">戻る</a>
-        </div>
       </div>
     </div>
+    <div class="text-center mt-3">
+      <a href="/signin">戻る</a>
+    </div>
   </div>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

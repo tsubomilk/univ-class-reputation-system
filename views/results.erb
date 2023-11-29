@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブ対応のビューポート設定 -->
   <title>Search Results</title>
-
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
   <style>
           .vertical-center {
             min-height: 80vh; /* 画面の高さに合わせてコンテナの高さを設定 */
@@ -144,32 +144,33 @@
     </div>
 
 
-<div class="container mt-5">
-  <h1>授業検索結果</h1>
-  <% if @courses.any? %>
-    <% @courses.each do |course| %>
-      <div class="card-class mb-3" data-href="/courses/<%= course.id %>" class="clickable-row">
-        <div class="card-body">
-          <div class="row align-items-center"> <!-- タイトルとボタンを中央揃えにする -->
-            <div class="col-md-8">
-              <h5 class="card-title"><%= course.className %></h5>
-              <h6 class="card-subtitle mb-2 text-muted">講師: <%= course.teacher %></h6>
-            </div>
-            <div class="col-md-4 text-md-right"> <!-- 右揃えにする -->
-              <a href="/courses/<%= course.id %>" class="btn">口コミをみる</a>
+
+  <div class="container mt-5">
+    <h1>授業検索結果</h1>
+    <% if @courses.any? %>
+      <% @courses.each do |course| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h5 class="card-title"><%= course.className %></h5>
+                <h6 class="card-subtitle mb-2 text-muted">講師: <%= course.teacher %></h6>
+              </div>
+              <div class="col-md-4 text-md-right">
+                <a href="/courses/<%= course.id %>" class="btn">口コミをみる</a>
+              </div>
             </div>
           </div>
         </div>
+      <% end %>
+    <% else %>
+      <% if @message %>
+      <div class="alert alert-warning">
+        <%= @message %>
       </div>
+      <% end %>
     <% end %>
-  <% else %>
-    <% if @message %>
-    <div class="alert alert-warning">
-      <%= @message %>
-    </div>
-    <% end %>
-  <% end %>
-</div>
+  </div>
 
 <script>
   // ドキュメントの読み込みが完了したら、イベントリスナーを追加

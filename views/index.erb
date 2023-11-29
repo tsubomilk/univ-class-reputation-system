@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta charset="UTF-8">
-	<title>Class Review</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブ対応のためのビューポート設定 -->
+  <title>Class Review</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
         <style>
         .vertical-center {
           min-height: 80vh; /* 画面の高さに合わせてコンテナの高さを設定 */
@@ -66,13 +67,13 @@
     </style>
 </head>
 <body>
-    <div class="container vertical-center">
-        <div class="row justify-content-center">
-            <div class="col-md-14">
-                <h1 class="card-title">授業検索</h1>
-                <div class="card">
-                    <div class="card-body">
-                    <form action="/search" method="post">
+  <div class="container vertical-center">
+    <div class="row justify-content-center">
+      <div cclass="col-md-10"> <!-- スマートフォンでの表示を考慮して幅を調整 -->
+        <h1 class="card-title">授業検索</h1>
+        <div class="card">
+          <div class="card-body">
+            <form action="/search" method="post">
         
                         <!-- なんでも検索 -->
                         <div class="form-group mb-3">

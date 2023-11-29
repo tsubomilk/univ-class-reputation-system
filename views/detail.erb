@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta charset="UTF-8">
-	<title>Class Review</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	  <!-- Font AwesomeのCSSを読み込む -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブ対応のためのビューポート設定 -->
+  <title>Class Review</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-
 </head>
 <body>
-<div class="container mt-5">
+  <div class="container mt-5">
   <div class="row align-items-center">
     <div class="col-md-8">
       <p>Course ID: <%= @courseId %></p>
@@ -90,7 +89,8 @@
 
     <div id ="#reviews"class="container mt-5">
     <h1>口コミ一覧</h1>
-    <table class="table">
+    <div class="table-responsive"> <!-- レスポンシブテーブルの適用 -->
+      <table class="table">
       <thead>
         <tr>
           <th scope="col">Review ID</th>
@@ -126,6 +126,7 @@
         <% end %>
       </tbody>
     </table>
+  </div>
   </div>
 </body>
 </html>
