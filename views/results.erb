@@ -22,11 +22,6 @@
               justify-content: center; /* 水平方向の中央揃え */
           }
   
-          .card {
-              border-radius: 30px;
-              border: 3px solid #A8C3CC;
-              background: #ECEFF1;
-          }
   
           .card-title, .form-label {
               color: #48636E;
@@ -153,7 +148,7 @@
   <h1>授業検索結果</h1>
   <% if @courses.any? %>
     <% @courses.each do |course| %>
-      <div class="card mb-3" data-href="/courses/<%= course.id %>" class="clickable-row">
+      <div class="card-class mb-3" data-href="/courses/<%= course.id %>" class="clickable-row">
         <div class="card-body">
           <div class="row align-items-center"> <!-- タイトルとボタンを中央揃えにする -->
             <div class="col-md-8">

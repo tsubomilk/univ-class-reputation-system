@@ -44,6 +44,10 @@ a{
 
 .card{
   border-color: #a8c3cc; /* Border color */
+  border-radius: 30px;
+  border: 3px solid #A8C3CC;
+  background: #ECEFF1;
+  
 }
 
 .btn {
@@ -55,6 +59,13 @@ a{
 /* Button hover state */
 .btn:hover {
     color:  #FE7A2C; /* Text color on hover */
+}
+
+.card-class{
+  border: 1px solid #A8C3CC;
+  border-color: #a8c3cc; /* Border color */
+  border-radius: 30px;
+  background: #ECEFF1;
 }
 
   .star-rating {

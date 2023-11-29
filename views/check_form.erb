@@ -6,6 +6,14 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <style>
+    .card-form{
+        border-color: #a8c3cc; /* Border color */
+        border-radius: 10px;
+        border: 1px solid #A8C3CC;
+        background: #ECEFF1;
+    }
+  </style>
 </head>
 <body>
   <div class="container mt-5">
@@ -17,7 +25,7 @@
     <h1>口コミ投稿内容の確認</h1>
 
       <!-- 課題の量の確認 -->
-      <div class="card mb-3">
+      <div class="card-form mb-3">
         <div class="card-header bg-orange text-black">1. 課題の量</div>
         <div class="card-body">
           <p><%= @form_data[:quantity] %></p>
@@ -26,7 +34,7 @@
       </div>
       
       <!-- 授業資料の有無の確認 -->
-      <div class="card mb-3">
+      <div class="card-form mb-3">
         <div class="card-header bg-orange text-black">2. 授業資料の有無</div>
         <div class="card-body">
           <p><%= @form_data[:reference] %></p>
@@ -35,7 +43,7 @@
       </div>
       
             <!-- グループワークの有無の確認 -->
-      <div class="card mb-3">
+      <div class="card-form mb-3">
         <div class="card-header bg-orange text-black">3. グループワークの有無</div>
         <div class="card-body">
           <p><%= @form_data[:groupWork] %></p>
@@ -44,7 +52,7 @@
       </div>
       
       <!-- テストの有無の確認 -->
-      <div class="card mb-3">
+      <div class="card-form mb-3">
         <div class="card-header bg-orange text-black">4. テストの有無</div>
         <div class="card-body">
           <p><%= @form_data[:hasTests] %></p>
@@ -53,7 +61,7 @@
       </div>
       
       <!-- レポートの有無の確認 -->
-      <div class="card mb-3">
+      <div class="card-form mb-3">
         <div class="card-header bg-orange text-black">5. レポートの有無</div>
         <div class="card-body">
           <p><%= @form_data[:hasReports] %></p>
@@ -62,7 +70,7 @@
       </div>
       
       <!-- プログラミングの有無の確認 -->
-      <div class="card mb-3">
+      <div class="card-form mb-3">
         <div class="card-header bg-orange text-black">6. プログラミングの有無</div>
         <div class="card-body">
           <p><%= @form_data[:hasProgramming] %></p>
@@ -71,7 +79,7 @@
       </div>
       
       <!-- この授業はどんな人に向き・不向きか？コメントの確認 -->
-      <div class="card mb-3">
+      <div class="card-form mb-3">
         <div class="card-header bg-orange text-black">7. この授業はどんな人に向き・不向き？</div>
         <div class="card-body">
           <p><%= @form_data[:targetAudience] %></p>
@@ -80,7 +88,7 @@
       </div>
       
       <!-- その他コメントの確認 -->
-      <div class="card mb-3">
+      <div class="card-form mb-3">
         <div class="card-header bg-orange text-black">8. その他コメント</div>
         <div class="card-body">
           <p><%= @form_data[:otherComments] %></p>
@@ -89,7 +97,7 @@
       </div>
       
       <!-- 総合評価の確認 -->
-      <div class="card mb-3">
+      <div class="card-form mb-3">
         <div class="card-header bg-orange text-black">9. 総合評価</div>
         <div class="card-body">
           <p><%= @form_data[:rating] %> / 5</p>

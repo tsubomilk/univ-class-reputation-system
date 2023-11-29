@@ -4,6 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Class Review</title>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <style>
+    .card-form{
+        border-color: #a8c3cc; /* Border color */
+        border-radius: 10px;
+        border: 1px solid #A8C3CC;
+        background: #ECEFF1;
+    }
+  </style>
 </head>
 <body>
 
@@ -18,7 +26,7 @@
         
         <!-- 各質問項目 -->
         <!-- 課題の量 -->
-        <div class="card mb-3">
+        <div class="card-form mb-3">
           <div class="card-header bg-orange text-black">1. 課題の量</div>
           <div class="card-body">
             <input type="radio" name="quantity" value="多い" id="quantityHigh">
@@ -33,7 +41,7 @@
         </div>
       
         <!-- 授業資料の有無 -->
-        <div class="card mb-3">
+        <div class="card-form mb-3">
           <div class="card-header bg-orange text-black">2. 授業資料の有無</div>
           <div class="card-body">
             <input type="radio" name="reference" value="あり" id="referenceYes">
@@ -45,7 +53,7 @@
         </div>
 
         <!-- グループワークの有無 -->
-        <div class="card mb-3">
+        <div class="card-form mb-3">
           <div class="card-header bg-orange text-black">3. グループワークの有無</div>
           <div class="card-body">
             <input type="radio" name="groupWork" value="あり" id="groupWorkYes">
@@ -57,7 +65,7 @@
         </div>
 
         <!-- テストの有無 -->
-        <div class="card mb-3">
+        <div class="card-form mb-3">
           <div class="card-header bg-orange text-black">4. テストの有無</div>
           <div class="card-body">
             <input type="radio" name="hasTests" value="あり" id="hasTestsYes">
@@ -69,7 +77,7 @@
         </div>
 
         <!-- レポートの有無 -->
-        <div class="card mb-3">
+        <div class="card-form mb-3">
           <div class="card-header bg-orange text-black">5. レポートの有無</div>
           <div class="card-body">
             <input type="radio" name="hasReports" value="あり" id="hasReportsYes">
@@ -81,7 +89,7 @@
         </div>
 
         <!-- プログラミングの有無 -->
-        <div class="card mb-3">
+        <div class="card-form mb-3">
           <div class="card-header bg-orange text-black">6. プログラミングの有無</div>
           <div class="card-body">
             <input type="radio" name="hasProgramming" value="あり" id="hasProgrammingYes">
@@ -93,7 +101,7 @@
         </div>
 
         <!-- この授業はどんな人に向き・不向きか？コメント -->
-        <div class="card mb-3">
+        <div class="card-form mb-3">
           <div class="card-header bg-orange text-black">7. この授業はどんな人に向き・不向き？</div>
           <div class="card-body">
             <textarea name="targetAudience" id="targetAudience" class="form-control"></textarea>
@@ -101,7 +109,7 @@
         </div>
 
         <!-- その他コメント -->
-        <div class="card mb-3">
+        <div class="card-form mb-3">
           <div class="card-header bg-orange text-black">8. その他コメント</div>
           <div class="card-body">
             <textarea name="otherComments" id="otherComments" class="form-control"></textarea>
@@ -109,7 +117,7 @@
         </div>
 
         <!-- 総合評価 -->
-        <div class="card mb-3">
+        <div class="card-form mb-3">
           <div class="card-header bg-orange text-black">9. 総合評価</div>
           <div class="card-body">
           <div class="star-rating" style="text-align: left;">
