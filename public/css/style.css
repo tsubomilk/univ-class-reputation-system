@@ -14,13 +14,47 @@
 
 body {
     font-family: 'HiraMaruProN-W4-AlphaNum', sans-serif;
-    color: #48636E;;
+    color: #48636E;
 }
+
+        .navbar {
+            background-color: #FE7A2C; /* 修正された色コード */
+            padding-top: 1rem; /* 上部のパディングを追加 */
+            padding-bottom: 1rem; /* 下部のパディングを追加 */
+        }
+        .text-decoration-none {
+            text-decoration: none !important;
+        }
+        .navbar-light .navbar-brand a {
+            color: white !important;
+        }
+        .navbar-light .navbar-nav .nav-link {
+            color: white;
+        }
+        
+        .navbar-light .navbar-brand {
+            color: white;
+        }
 
 
 a{
     text-decoration: none;
     color: black;
+}
+
+.card{
+  border-color: #a8c3cc; /* Border color */
+}
+
+.btn {
+    border-color: #a8c3cc; /* Border color */
+    color: #333; /* Text color */
+    background-color: transparent; /* Transparent background */
+}
+
+/* Button hover state */
+.btn:hover {
+    color:  #FE7A2C; /* Text color on hover */
 }
 
   .star-rating {
@@ -29,10 +63,13 @@ a{
   }
   .star-rating input[type="radio"] {
     display: none; /* Hide the radio buttons */
-    margin-right: 5px; /* 右側のマージンを追加 */
   }
   
 
+  .ratings{
+    color: #FE7A2C;
+    font-size: 25px;
+  }
   .star-rating label {
     font-size: 2rem;
     padding: 0 5px;

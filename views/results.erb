@@ -3,22 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <title>Search Results</title>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
   <style>
-        .vertical-center {
-          min-height: 80vh; /* 画面の高さに合わせてコンテナの高さを設定 */
-          display: flex;
-          align-items: center; /* 垂直方向の中央揃えを設定 */
-          justify-content: center; /* 水平方向の中央揃えを設定 */
-          margin-top: calc(- 30vh); /* 50pxはナビゲーションバーの推定高さです */
-        }
-  </style>
+          .vertical-center {
+            min-height: 80vh; /* 画面の高さに合わせてコンテナの高さを設定 */
+            display: flex;
+            align-items: center; /* 垂直方向の中央揃えを設定 */
+            justify-content: center; /* 水平方向の中央揃えを設定 */
+            margin-top: calc(- 30vh); /* 50pxはナビゲーションバーの推定高さです */
+          }
+  
+          .container.d-flex.h-100 {
+              min-height: 100vh; /* Viewport Height を基準に100%の高さを確保 */
+              display: flex; /* Flexboxコンテナを有効化 */
+              align-items: center; /* 垂直方向の中央揃え */
+              justify-content: center; /* 水平方向の中央揃え */
+          }
+  
+          .card {
+              border-radius: 30px;
+              border: 3px solid #A8C3CC;
+              background: #ECEFF1;
+          }
+  
+          .card-title, .form-label {
+              color: #48636E;
+          }
+  
+          .card-body {
+              padding: 2rem;
+          }
+  
+          .form-control {
+              border-color: #a8c3cc;
+              color: #48636E;
+          }
+  
+          .btn-outline-success {
+              border-color: #a8c3cc;
+              color: #48636E;
+          }
+  
+          .btn-outline-success:hover {
+              background-color: #a8c3cc;
+              color: white;
+          }
+          
+          label{
+              color: #48636E;
+          }
+          
+          .btn {
+              border-color: #a8c3cc; /* Border color */
+              color: #333; /* Text color */
+              background-color: transparent; /* Transparent background */
+          }
+  
+          /* Button hover state */
+          .btn:hover {
+              color:  #FE7A2C; /* Text color on hover */
+          }
+      </style>
 </head>
 <body>
 <div class="container">
-    <h1 class="card-title">Search Class</h1>
     <div class="container">
+      <h1 class="card-title">授業検索</h1>
       <div class="card">
         <div class="card-body">
           <form action="/search" method="post">
@@ -87,7 +139,7 @@
     
             <div class="form-group row">
               <div class="col text-center">
-                <button class="btn btn-outline-success px-4" type="submit">検索</button>
+                <button class="btn px-4" type="submit">検索</button>
               </div>
             </div>
     
@@ -109,7 +161,7 @@
               <h6 class="card-subtitle mb-2 text-muted">講師: <%= course.teacher %></h6>
             </div>
             <div class="col-md-4 text-md-right"> <!-- 右揃えにする -->
-              <a href="/courses/<%= course.id %>" class="btn btn-primary">口コミをみる</a>
+              <a href="/courses/<%= course.id %>" class="btn">口コミをみる</a>
             </div>
           </div>
         </div>
@@ -124,10 +176,6 @@
   <% end %>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
   // ドキュメントの読み込みが完了したら、イベントリスナーを追加
   document.addEventListener('DOMContentLoaded', function() {

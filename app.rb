@@ -195,6 +195,7 @@ end
 
 post '/check_form' do
   # Store the form data in a hash
+  
   @form_data = {
     quantity: params[:quantity],
     reference: params[:reference],
@@ -214,11 +215,11 @@ end
 post '/submit_form' do
     review = Review.create(
         dropRate: params[:quantity],
-        workload: params[:reference] == 'true',
-        groupWork: params[:groupWork] == 'true',
-        hasTests: params[:hasTests] == 'true',
-        hasReports: params[:hasReports] == 'true',
-        hasProgramming: params[:hasProgramming] == 'true',
+        workload: params[:reference] == 'あり',
+        groupWork: params[:groupWork] == 'あり',
+        hasTests: params[:hasTests] == 'あり',
+        hasReports: params[:hasReports] == 'あり',
+        hasProgramming: params[:hasProgramming] == 'あり',
         targetAudience: params[:targetAudience],
         otherComments: params[:otherComments],
         likes: params[:rating],

@@ -9,10 +9,16 @@
 
 </head>
 <body>
-	<div class="container mt-5">
-	  <p>Course ID: <%= @courseId %></p>
-    <h1 class="display-4"><%= @course.className %></h1>
-    <button type="submit" class="btn btn-light"><a href="/courses/<%= @course.id %>/reviews/new">口コミを追加する</a></button>
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <div class="col-md-8">
+      <p>Course ID: <%= @courseId %></p>
+      <h1 class="display-4"><%= @course.className %></h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <a href="/courses/<%= @course.id %>/reviews/new" class="btn">口コミを追加する</a>
+    </div>
+  </div>
       <div class="card card-body">
         <div class="row">
           <!-- 授業名のタイトルと値を横並びにする -->

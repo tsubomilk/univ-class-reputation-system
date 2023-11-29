@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Check Form</title>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
   <div class="container mt-5">
     <form action="/submit_form" method="post">
-      <div class="card p-3">
+
         <p>Course ID: <%= @form_data[:courseId] %></p>
         <input type="hidden" name="courseId" value="<%= @form_data[:courseId] %>">
-      </div>
-    <h1>提出内容の確認</h1>
+
+    <h1>口コミ投稿内容の確認</h1>
 
       <!-- 課題の量の確認 -->
       <div class="card mb-3">
@@ -95,13 +97,9 @@
         </div>
       </div>
 
-      
-      <button type="submit" class="btn btn-primary">口コミ投稿</button>
+      <button type="submit" class="btn">口コミ投稿</button>
     </form>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
