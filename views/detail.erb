@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Class Review</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	  <!-- Font AwesomeのCSSを読み込む -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
 </head>
 <body>
 	<div class="container mt-5">
@@ -57,14 +60,27 @@
       </div>
   </div>
   
-    <div class="container mt-3 text-center">
-      <h3>口コミの総合評価</h3>
-      <% if @reviews.any? %>
-        <p>平均評価: <%= @average_rating %> ★</p>
-      <% else %>
-        <p><%= @average_rating %></p>
-      <% end %>
-    </div>
+  <div class="container mt-3 text-center">
+    <h3>口コミの総合評価</h3>
+    <% if @reviews.any? %>
+      <div class="ratings">
+        <span><%= @average_rating %></span>
+        <% 5.times do |i| %>
+          <% if @average_rating > i %>
+            <% if @average_rating < i + 1 %>
+              <i class="fas fa-star-half-alt"></i> <!-- 半星 -->
+            <% else %>
+              <i class="fas fa-star"></i> <!-- 満星 -->
+            <% end %>
+          <% else %>
+            <i class="far fa-star"></i> <!-- 空星 -->
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>レビューはまだありません。</p>
+    <% end %>
+  </div>
 
     <div id ="#reviews"class="container mt-5">
     <h1>Reviews List</h1>

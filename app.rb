@@ -38,6 +38,7 @@ get "/" do
 end
 
 get "/signup" do
+    @hide_navbar = true
     erb :sign_up
 end
 
@@ -55,6 +56,7 @@ post "/signup" do
 end
 
 get "/signin" do
+    @hide_navbar = true
     erb :sign_in
 end
 

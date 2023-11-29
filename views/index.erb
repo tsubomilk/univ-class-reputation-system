@@ -4,16 +4,63 @@
 	<meta charset="UTF-8">
 	<title>Class Review</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <style>
+        .vertical-center {
+          min-height: 80vh; /* 画面の高さに合わせてコンテナの高さを設定 */
+          display: flex;
+          align-items: center; /* 垂直方向の中央揃えを設定 */
+          justify-content: center; /* 水平方向の中央揃えを設定 */
+          margin-top: calc(- 30vh); /* 50pxはナビゲーションバーの推定高さです */
+        }
+
+        .container.d-flex.h-100 {
+            min-height: 100vh; /* Viewport Height を基準に100%の高さを確保 */
+            display: flex; /* Flexboxコンテナを有効化 */
+            align-items: center; /* 垂直方向の中央揃え */
+            justify-content: center; /* 水平方向の中央揃え */
+        }
+
+        .card {
+            border-radius: 30px;
+            border: 3px solid #A8C3CC;
+            background: #ECEFF1;
+        }
+
+        .card-title, .form-label {
+            color: #48636E;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .form-control {
+            border-color: #a8c3cc;
+            color: #48636E;
+        }
+
+        .btn-outline-success {
+            border-color: #a8c3cc;
+            color: #48636E;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #a8c3cc;
+            color: white;
+        }
+        
+        label{
+            color: #48636E;
+        }
+    </style>
 </head>
 <body>
-	<div class="container mt-5">
-		<tr>
-			<button class="btn btn-light mb-3"><a href="/courses/new" class="text-decoration-none">新しい授業追加</a></button>
-		</tr>
-<div class="container mt-1">
-    <div class="card">
-        <div class="card-body">
-            <h1 class="card-title">Search Class</h1>
+    <div class="container vertical-center">
+        <div class="row justify-content-center">
+            <div class="col-md-14">
+                <h1 class="card-title">授業検索</h1>
+                <div class="card">
+                    <div class="card-body">
             <form action="/search" method="post">
 
                 <!-- なんでも検索 -->
@@ -106,37 +153,11 @@
                 </div>
 
             </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</div>
-
-    
-        <div class="container mt-5">
-          <h1>Class All</h1>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Class Name</th>
-                <th scope="col">Teacher</th>
-                <th scope="col">Grade</th>
-                <th scope="col">Week</th>
-                <th scope="col">Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @courses.each do |course| %>
-              <tr onclick="location.href='/courses/<%= course.id %>'" style="cursor:pointer;">
-                <td><%= course.className %></td>
-                <td><%= course.teacher %></td>
-                <td><%= course.grade %></td>
-                <td><%= course.week %></td>
-                <td><%= course.time %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-	</div>
+<!--<button class="btn btn-light mb-3"><a href="/courses/new" class="text-decoration-none">新しい授業追加</a></button>-->
 </body>
 </html>

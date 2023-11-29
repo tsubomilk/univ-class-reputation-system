@@ -4,6 +4,19 @@
 /*.row{*/
 /*  color: red;*/
 /*}*/
+@font-face {
+    font-family: 'HiraMaruProN-W4-AlphaNum';
+    src: url('/fonts//HiraMaruProN-W4-AlphaNum-01.woff') format('woff'),
+         url('/fonts/HiraMaruProN-W4-AlphaNum-02.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'HiraMaruProN-W4-AlphaNum', sans-serif;
+    color: #48636E;;
+}
+
 
 a{
     text-decoration: none;
@@ -16,7 +29,10 @@ a{
   }
   .star-rating input[type="radio"] {
     display: none; /* Hide the radio buttons */
+    margin-right: 5px; /* 右側のマージンを追加 */
   }
+  
+
   .star-rating label {
     font-size: 2rem;
     padding: 0 5px;

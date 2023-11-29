@@ -5,13 +5,22 @@
   <title>Search Results</title>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+        .vertical-center {
+          min-height: 80vh; /* 画面の高さに合わせてコンテナの高さを設定 */
+          display: flex;
+          align-items: center; /* 垂直方向の中央揃えを設定 */
+          justify-content: center; /* 水平方向の中央揃えを設定 */
+          margin-top: calc(- 30vh); /* 50pxはナビゲーションバーの推定高さです */
+        }
+  </style>
 </head>
 <body>
-  <div class="container mt-5">
+<div class="container">
+    <h1 class="card-title">Search Class</h1>
     <div class="container">
       <div class="card">
         <div class="card-body">
-          <h1 class="card-title">Search Class</h1>
           <form action="/search" method="post">
     
             <div class="form-group">
@@ -88,59 +97,48 @@
     </div>
 
 
-	<div class="container mt-5">
-    <h1>Search Results</h1>
-
-    
-    <% if @courses.any? %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Course ID</th>
-            <th>Class Name</th>
-            <th>Teacher</th>
-            <th>Grade</th>
-            <th>Week</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @courses.each do |course| %>
-            <tr data-href="/courses/<%= course.id %>" class="clickable-row">
-              <td><%= course.id %></td>
-              <td><%= course.className %></td>
-              <td><%= course.teacher %></td>
-              <td><%= course.grade %></td>
-              <td><%= course.week %></td>
-              <td><%= course.time %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-    <% else %>
-      <% if @message %>
-      <div class="alert alert-warning">
-        <%= @message %>
+<div class="container mt-5">
+  <h1>授業検索結果</h1>
+  <% if @courses.any? %>
+    <% @courses.each do |course| %>
+      <div class="card mb-3" data-href="/courses/<%= course.id %>" class="clickable-row">
+        <div class="card-body">
+          <div class="row align-items-center"> <!-- タイトルとボタンを中央揃えにする -->
+            <div class="col-md-8">
+              <h5 class="card-title"><%= course.className %></h5>
+              <h6 class="card-subtitle mb-2 text-muted">講師: <%= course.teacher %></h6>
+            </div>
+            <div class="col-md-4 text-md-right"> <!-- 右揃えにする -->
+              <a href="/courses/<%= course.id %>" class="btn btn-primary">口コミをみる</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <% end %>
     <% end %>
-  </div>    
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script>
-        // ドキュメントの読み込みが完了したら、イベントリスナーを追加
-        document.addEventListener('DOMContentLoaded', function() {
-          // "clickable-row"クラスを持つすべての行に対してイベントリスナーを設定
-          document.querySelectorAll('.clickable-row').forEach(function(row) {
-            row.addEventListener('click', function() {
-              window.location.href = this.dataset.href;
-            });
-          });
-        });
-        
-  </script>
+  <% else %>
+    <% if @message %>
+    <div class="alert alert-warning">
+      <%= @message %>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+  // ドキュメントの読み込みが完了したら、イベントリスナーを追加
+  document.addEventListener('DOMContentLoaded', function() {
+    // "clickable-row"クラスを持つすべてのカードに対してイベントリスナーを設定
+    document.querySelectorAll('.clickable-row').forEach(function(card) {
+      card.addEventListener('click', function() {
+        window.location.href = this.dataset.href;
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
