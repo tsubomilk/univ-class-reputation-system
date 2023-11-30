@@ -42,7 +42,7 @@
             <h5 class="card-title">開講学年</h5>
           </div>
           <div class="col-sm-9">
-            <p class="card-text"><%= @course.grade %></p>
+            <p class="card-text"><%= @course.grade %>年</p>
           </div>
         </div>
         <div class="row">
@@ -58,7 +58,7 @@
             <h5 class="card-title">開講時限</h5>
           </div>
           <div class="col-sm-9">
-            <p class="card-text"><%= @course.time %></p>
+            <p class="card-text"><%= @course.time %>限</p>
           </div>
         </div>
       </div>
@@ -93,9 +93,8 @@
       <table class="table">
       <thead>
         <tr>
-          <th scope="col">Review ID</th>
           <th scope="col">Course ID</th>
-          <th scope="col">User ID</th>
+          <th scope="col">投稿者</th>
           <th scope="col">総合評価</th>
           <th scope="col">課題の量</th>
           <th scope="col">レポートの有無</th>
@@ -110,16 +109,15 @@
       <tbody>
         <% @reviews.each do |review| %>
           <tr>
-            <td><%= review.reviewId %></td>
             <td><%= review.courseId %></td>
-            <td><%= review.userId %></td>
+            <td><%= review.userName %></td>
             <td><%= review.likes %></td>
             <td><%= review.dropRate %></td>
             <td><%= review.workload %></td>
-            <td><%= review.groupWork ? 'Yes' : 'No' %></td>
-            <td><%= review.hasTests ? 'Yes' : 'No' %></td>
-            <td><%= review.hasReports ? 'Yes' : 'No' %></td>
-            <td><%= review.hasProgramming ? 'Yes' : 'No' %></td>
+            <td><%= review.groupWork ? 'あり' : 'なし' %></td>
+            <td><%= review.hasTests ? 'あり' : 'なし' %></td>
+            <td><%= review.hasReports ? 'あり' : 'なし' %></td>
+            <td><%= review.hasProgramming ? 'あり' : 'なし' %></td>
             <td><%= review.targetAudience %></td>
             <td><%= review.otherComments %></td>
           </tr>

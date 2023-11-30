@@ -19,18 +19,12 @@ before "/tasks" do
 end
 
 get "/" do
-    # @lists = List.all
-    # if current_user.nil?
-    #     @tasks = Task.none
-    # elsif params[:list].nil? then
-    #     @tasks = current_user.tasks
-    # else
-    #     @tasks = List.find(params[:list]).tasks.where(user_id: current_user.id)
-    # end
-    # puts @tasks
     if session[:user].nil?
     redirect "/signin"
     else
+    
+    user = User.find(session[:user])  # セッションからユーザー情報を取得
+    @userName = user.name
     
     @courses = Course.all
     erb :index
@@ -123,6 +117,9 @@ end
 get '/search' do
   # @courses が nil の場合は空の配列を設定
   @courses = [] if @courses.nil?
+  
+  user = User.find(session[:user])  # セッションからユーザー情報を取得
+  @userName = user.name
 
   if session[:no_results]
     @message = '検索条件に当てはまるものが見つかりませんでした。'
@@ -213,7 +210,10 @@ post '/check_form' do
 end
 
 post '/submit_form' do
+    user = User.find(session[:user])  # セッションからユーザー情報を取得
+
     review = Review.create(
+        userName: user.name,  # ユーザー名を使用
         dropRate: params[:quantity],
         workload: params[:reference] == 'あり',
         groupWork: params[:groupWork] == 'あり',

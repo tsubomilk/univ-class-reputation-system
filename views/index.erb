@@ -67,10 +67,19 @@
     </style>
 </head>
 <body>
-  <div class="container vertical-center">
-    <div class="row justify-content-center">
-      <div cclass="col-md-10"> <!-- スマートフォンでの表示を考慮して幅を調整 -->
-        <h1 class="card-title">授業検索</h1>
+<div class="container vertical-center">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="card-title">授業検索</h1>
+          </div>
+          <% if @userName == 'admin' %>
+            <div class="col-md-4 text-right align-self-center">
+              <a href="/courses/new" class="btn px-4">授業を追加する</a>
+            </div>
+          <% end %>
+        </div>
         <div class="card">
           <div class="card-body">
             <form action="/search" method="post">
