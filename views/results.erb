@@ -166,6 +166,12 @@
               </div>
               <div class="col-md-4 text-md-right">
                 <a href="/courses/<%= course.id %>" class="btn">口コミをみる</a>
+                <% if @userName == 'admin' %>
+                  <form action="/courses/<%= course.id %>/delete" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-danger">削除</button>
+                  </form>
+                <% end %>
               </div>
             </div>
           </div>

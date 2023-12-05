@@ -5,7 +5,6 @@ require 'sinatra/reloader' if development?
 require "./models"
 enable :sessions
 
-
 helpers do
     def current_user
         User.find_by(id: session[:user])
@@ -101,6 +100,11 @@ post '/search' do
 
   # 検索結果をインスタンス変数にセット
   @courses = query.to_a
+  
+  
+  # セッションからユーザー情報を取得
+  user = User.find(session[:user])  
+  @userName = user.name
 
   # 検索結果がない場合は検索ページにリダイレクトしてメッセージを表示
   if @courses.empty?
@@ -173,6 +177,23 @@ get "/courses/:id" do
   end
 
     erb :detail
+end
+
+delete '/courses/:id/delete' do
+  # # 管理者チェック
+  # redirect '/login' unless @userName == 'admin'
+
+  # 指定されたIDの授業を見つけて削除
+  course = Course.find_by(id: params[:id])
+  if course
+    course.destroy
+    # 授業が削除された後、一覧ページにリダイレクト
+    redirect '/search'
+  else
+    # コースが見つからない場合はエラーメッセージを表示
+    @error = "指定された授業が見つかりませんでした。"
+    erb :error_page  # 適切なエラーページを表示
+  end
 end
 
 # 口コミを追加するルート
