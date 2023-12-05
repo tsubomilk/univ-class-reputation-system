@@ -14,11 +14,11 @@
 
 body {
     font-family: 'HiraMaruProN-W4-AlphaNum', sans-serif;
-    color: #48636E;
+    color: #FE7A2B;
 }
 
         .navbar {
-            background-color: #FE7A2C; /* 修正された色コード */
+            background-color: #FE7A2B; /* 修正された色コード */
             padding-top: 1rem; /* 上部のパディングを追加 */
             padding-bottom: 1rem; /* 下部のパディングを追加 */
         }
@@ -59,7 +59,7 @@ a{
 
 /* Button hover state */
 .btn:hover {
-    color:  #FE7A2C; /* Text color on hover */
+    color:  #FE7A2B; /* Text color on hover */
 }
 
 .card-class{
@@ -79,7 +79,7 @@ a{
   
 
   .ratings{
-    color: #FE7A2C;
+    color: #FE7A2B;
     font-size: 25px;
   }
   .star-rating label {
