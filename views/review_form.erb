@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブ対応のビューポート設定 -->
 	<title>Class Review</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <style>
     .card-form{
@@ -12,6 +15,37 @@
         border: 1px solid #A8C3CC;
         background: #ECEFF1;
     }
+        /* ラジオボタンに適用されるスタイル */
+    .btn-group-toggle .btn input[type="radio"] {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      pointer-events: none;
+    }
+    
+    /* 選択されたラジオボタンに適用されるスタイル */
+    .btn-group-toggle .btn input[type="radio"]:checked + .btn {
+      background-color: #007bff;
+      color: white;
+    }
+    
+    .btn-group-toggle > .btn {
+      margin-right: 0.5rem; /* or '8px' or any other value */
+    }
+    /* Remove margin for the last button */
+    .btn-group-toggle > .btn:last-child {
+      margin-right: 0;
+    }
+    
+  .custom-font-size {
+    font-size: 20px; /* フォントサイズを20pxに設定 */
+    padding: .375rem .75rem; /* ボタンの内側の余白を調整 */
+  }
+  /* Bootstrap 4のbtn-lgクラスによるパディングを上書きする場合は以下を追加 */
+  .btn-lg.custom-font-size {
+    padding: .5rem 1rem; /* パディングをカスタマイズ */
+    font-size: 20px; /* フォントサイズを20pxに設定 */
+  }
+
   </style>
 </head>
 <body>
@@ -20,26 +54,33 @@
 
         <p>Course ID: <%= @courseId %></p>
  <!-- 口コミ投稿フォーム -->
-    <h1 class="mb-4"><%= @courseName %> の口コミ投稿</h1>
+    <h1 class="mb-4 text-center"><%= @courseName %> の口コミ投稿</h1>
     <form action="/check_form" method="post">
         <!-- 隠しフィールドでコースIDを送信 -->
         <input required type="hidden" name="courseId" value="<%= @courseId %>">
         
         <!-- 各質問項目 -->
         <!-- 課題の量 -->
-        <div class="card-form mb-3">
-          <div class="card-header bg-orange text-black">1. 課題の量<span class="text-danger">*</span></div>
-          <div class="card-body">
-            <input type="radio" name="quantity" value="多い" id="quantityHigh" required>
-            <label for="quantityHigh">多い</label>
+<div class="mb-3">
+  <h4 class="mb-2 text-center">1. 課題の量</h4>
+  <div class="d-flex justify-content-center">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-outline-primary btn-lg custom-font-size">
+        <input type="radio" name="quantity" value="多い" id="quantityHigh" autocomplete="off" required> 多い
+      </label>
+      <label class="btn btn-outline-primary btn-lg custom-font-size">
+        <input type="radio" name="quantity" value="普通" id="quantityMidium" autocomplete="off" required> 普通
+      </label>
+      <label class="btn btn-outline-primary btn-lg custom-font-size">
+        <input type="radio" name="quantity" value="少ない" id="quantityLow" autocomplete="off" required> 少ない
+      </label>
+    </div>
+  </div>
+</div>
 
-            <input required type="radio" name="quantity" value="普通" id="quantityMidium">
-            <label for="quantityMidium">普通</label>
 
-            <input required type="radio" name="quantity" value="少ない" id="quantityLow">
-            <label for="quantityLow">少ない</label>
-          </div>
-        </div>
+
+
       
         <!-- 授業資料の有無 -->
         <div class="card-form mb-3">
@@ -137,7 +178,7 @@
         </div>
   
         <!-- 送信ボタン -->
-        <button type="submit" class="btn">送信</button>
+        <button type="submit" class="btn">確認</button>
     </form>
     
     

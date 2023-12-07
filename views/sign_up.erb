@@ -11,25 +11,27 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
   <div class="container">
     <h2 class="card-title text-center mb-4">新規会員登録</h2>
-    <div class="card" style="max-width: 650px; margin: auto; display: flex; align-items: center; height: 100%;">
-      <div class="card-body w-100">
-        <form action="/signup" method="post" class="d-flex flex-column justify-content-center h-100">
-          <div class="form-all px-5">
-            <div class="form-group row">
-              <label for="inputID" class="col-sm-3 col-form-label">名前</label>
-              <div class="col-sm-9"> <!-- サイズ調整と右寄せの削除 -->
-                <input type="text" class="form-control" id="inputID" name="name" placeholder="名前を入力">
-              </div>
+    <div class="card" style="max-width: 650px; margin: auto;">
+      
+      <div class="card-body">
+        <form action="/signup" method="post" class="d-flex flex-column">
+          <div class="px-5">
+            <div class="form-group">
+              <label for="inputID">名前</label>
+              <input type="text" class="form-control" id="inputID" name="name" placeholder="名前を入力" required>
             </div>
-            <div class="form-group row">
-              <label for="inputPassword" class="col-sm-3 col-form-label">PASSWORD</label>
-              <div class="col-sm-9"> <!-- サイズ調整と右寄せの削除 -->
-                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="パスワードを入力">
-                <input type="password" class="form-control mt-3" name="password_confirmation" placeholder="パスワードをもう一度入力">
+          <div class="form-group">
+            <label for="inputPassword">PASSWORD</label>
+            <input type="password" class="form-control mb-2 <%= 'is-invalid' if @error && !params[:password].empty? %>" id="inputPassword" name="password" placeholder="パスワードを入力" required>
+            <input type="password" class="form-control <%= 'is-invalid' if @error && !params[:password_confirmation].empty? %>" name="password_confirmation" placeholder="パスワードをもう一度入力" required>
+            <% if @error %>
+              <div class="invalid-feedback">
+                <%= @error %>
               </div>
-            </div>
+            <% end %>
           </div>
-          <div class="text-center mt-2 mb-auto">
+          </div>
+          <div class="text-center mt-2">
             <button type="submit" class="btn mb-2">登録</button>
           </div>
         </form>

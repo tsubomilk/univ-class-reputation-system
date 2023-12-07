@@ -9,6 +9,13 @@ helpers do
     def current_user
         User.find_by(id: session[:user])
     end
+    
+    def calculate_percentage(reviews, attribute)
+      return 0 if reviews.empty?
+      total = reviews.count.to_f
+      count = reviews.count { |review| review[attribute] }
+      (count / total * 100).round(2)
+    end
 end
 
 before "/tasks" do
@@ -36,17 +43,51 @@ get "/signup" do
 end
 
 post "/signup" do
-    user = User.create(
-        name: params[:name],
-        password: params[:password],
-        password_confirmation: params[:password_confirmation]
-    )
-    
-    if user.persisted?
-        session[:user] = user.id
-    end
-    redirect "/"
+  # バリデーション用の正規表現
+  password_regex = /\A[a-zA-Z0-9]+\z/
+  
+  # パスワードが条件に合うか検証
+  unless params[:password].match(password_regex)
+    @hide_navbar = true
+    @error = "パスワードは半角英数で入力してください。"
+    return erb :sign_up
+  end
+  
+  # パスワードが確認と一致するか検証
+  unless params[:password] == params[:password_confirmation]
+    @hide_navbar = true
+    @error = "パスワードとパスワード確認が一致しません。"
+    return erb :sign_up
+  end
+  
+  # ユーザーが既に存在するかチェック
+  if User.exists?(name: params[:name])
+    @hide_navbar = true
+    @error = "そのユーザー名は既に存在します。"
+    return erb :sign_up
+  end
+  
+  # ユーザーの作成
+  user = User.new(
+    name: params[:name],
+    password: params[:password],
+    password_confirmation: params[:password_confirmation]
+  )
+  
+  # ユーザーの保存に成功したかどうかで処理を分岐
+  if user.save
+      # ユーザーの保存に成功した場合、セッションにユーザーIDを保存してリダイレクト
+      session[:user] = user.id
+      redirect "/"
+    else
+    # ユーザーの保存に失敗した場合は、エラーメッセージと共にサインアップフォームを再表示
+    @hide_navbar = true
+    @error = user.errors.full_messages.join(", ")
+    erb :sign_up
+  end
 end
+
+
 
 get "/signin" do
     @hide_navbar = true
@@ -175,6 +216,15 @@ get "/courses/:id" do
   else
     @average_rating = "No reviews yet"
   end
+  
+  @total_reviews = @reviews.count.to_f
+  max_score = @total_reviews * 2
+  score_counts = { '少ない' => 0, '普通' => 1, '多い' => 2 }
+  total_score = @reviews.reduce(0) do |sum, review|
+    sum + score_counts.fetch(review.dropRate, 0)
+  end
+
+  @percentage = (total_score / max_score * 100).round(2)
 
     erb :detail
 end

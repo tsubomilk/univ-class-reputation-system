@@ -5,17 +5,17 @@
 /*  color: red;*/
 /*}*/
 @font-face {
-    font-family: 'HiraMaruProN-W4-AlphaNum';
-    src: url('/fonts//HiraMaruProN-W4-AlphaNum-01.woff') format('woff'),
-         url('/fonts/HiraMaruProN-W4-AlphaNum-02.woff') format('woff');
+    font-family: 'Hiragino Maru Gothic ProN';
+    src: url('/fonts/ヒラギノ丸ゴProNW4.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-    font-family: 'HiraMaruProN-W4-AlphaNum', sans-serif;
+    font-family: 'Hiragino Maru Gothic ProN', sans-serif;
     color: #48636E;
 }
+
 
         .navbar {
             background-color: #FE7A2B; /* 修正された色コード */
@@ -40,16 +40,16 @@ body {
 a{
     text-decoration: none;
     /*color: black;*/
-    font-family: 'HiraMaruProN-W4-AlphaNum', sans-serif;
+    font-family: 'Hiragino Maru Gothic ProN', sans-serif;
 }
 
 .card{
   border-color: #a8c3cc; /* Border color */
-  border-radius: 30px;
+  border-radius: 20px;
   border: 3px solid #A8C3CC;
   background: #ECEFF1;
-  
 }
+
 
 .btn {
     border-color: #a8c3cc; /* Border color */
@@ -67,6 +67,14 @@ a{
   border-color: #a8c3cc; /* Border color */
   border-radius: 30px;
   background: #ECEFF1;
+}
+
+.error-message {
+  color: red;
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px; /* スペースの追加 */
 }
 
   .star-rating {

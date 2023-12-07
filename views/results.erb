@@ -60,7 +60,23 @@
           .btn:hover {
               color:  #FE7A2C; /* Text color on hover */
           }
+          
+          .clickable-card {
+              cursor: pointer; /* マウスカーソルをクリック可能な表示に変更 */
+          }
+
       </style>
+  <!-- ===Thank you for watching my code ======
+    
+       .@@@@@@@@@@@@] W@@@@@@@@@@h.  @@@#    .@@@@
+       .????@@@@????` @@@H   _4@@@N  @@@b    .@@@H
+           .@@@H      @@@H     @@@@_.@@@F    .@@@#
+           .@@@#     .@@@#    .@@@H .@@@]    ,@@@b
+           .@@@b     .@@@h...J@@@@% .@@@N,. .W@@@%
+           ,@@@F     .@@@@@@@@@HY!   (H@@@@@@@@#=
+           .!!!!                        _?77?!
+    
+  ========== Tokyo Denki University ======-->
 </head>
 <body>
 <div class="container">
@@ -157,7 +173,7 @@
     <h1>授業検索結果</h1>
     <% if @courses.any? %>
       <% @courses.each do |course| %>
-        <div class="card mb-3">
+        <div class="card mb-3 clickable-card" data-href="/courses/<%= course.id %>">
           <div class="card-body">
             <div class="row align-items-center">
               <div class="col-md-8">
@@ -165,7 +181,6 @@
                 <h6 class="card-subtitle mb-2 text-muted">講師: <%= course.teacher %></h6>
               </div>
               <div class="col-md-4 text-md-right">
-                <a href="/courses/<%= course.id %>" class="btn">口コミをみる</a>
                 <% if @userName == 'admin' %>
                   <form action="/courses/<%= course.id %>/delete" method="post">
                     <input type="hidden" name="_method" value="delete">
@@ -187,15 +202,12 @@
   </div>
 
 <script>
-  // ドキュメントの読み込みが完了したら、イベントリスナーを追加
-  document.addEventListener('DOMContentLoaded', function() {
-    // "clickable-row"クラスを持つすべてのカードに対してイベントリスナーを設定
-    document.querySelectorAll('.clickable-row').forEach(function(card) {
-      card.addEventListener('click', function() {
-        window.location.href = this.dataset.href;
-      });
+document.querySelectorAll('.clickable-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+        window.location.href = this.getAttribute('data-href');
     });
-  });
+});
+
 </script>
 
 </body>
