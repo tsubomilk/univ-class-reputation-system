@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :tasks
    # ユーザー名が一意であることを保証するバリデーション
-  validates :name, presence: true, uniqueness: true
+#   validates :name, presence: true, uniqueness: true
 
   # パスワードが半角英数であることを確認するバリデーション
   validates :password, presence: true,
