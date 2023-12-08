@@ -29,7 +29,7 @@
     }
     
     .btn-group-toggle > .btn {
-      margin-right: 0.5rem; /* or '8px' or any other value */
+      margin-right: 1.5rem; /* or '8px' or any other value */
     }
     /* Remove margin for the last button */
     .btn-group-toggle > .btn:last-child {
@@ -44,6 +44,34 @@
   .btn-lg.custom-font-size {
     padding: .5rem 1rem; /* パディングをカスタマイズ */
     font-size: 20px; /* フォントサイズを20pxに設定 */
+  }
+  
+.btn-choice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 257.561px; /* Adjust width as necessary */
+  height: 80px; /* Adjust height as necessary */
+  flex-shrink: 0;
+  font-size: 20px; /* Adjust the font size as necessary */
+  margin: 0 10px; /* Adjust the margin as necessary */
+  border-radius: 10px; /* Rounded corners */
+  color: #495057; /* Default Bootstrap text color */
+  background-color: #fff; /* White background */
+  border: 1px solid #ced4da; /* Bootstrap's default border color */
+}
+
+  
+  .btn-group-toggle .btn-choice {
+    border-radius: 10px !important; /* Force all corners to be rounded */
+  }
+
+
+  /* Custom styles for when a button is selected */
+  .btn-choice.active, .btn-choice:active, .btn-choice:focus, .btn-choice:checked {
+    color: #FE7A2B; /* White text */
+    /*background-color: #FE7A2B; */
+    border-color: #FE7A2B; /* Custom orange border */
   }
 
   </style>
@@ -61,107 +89,121 @@
         
         <!-- 各質問項目 -->
         <!-- 課題の量 -->
-<div class="mb-3">
-  <h4 class="mb-2 text-center">1. 課題の量</h4>
-  <div class="d-flex justify-content-center">
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-outline-primary btn-lg custom-font-size">
-        <input type="radio" name="quantity" value="多い" id="quantityHigh" autocomplete="off" required> 多い
-      </label>
-      <label class="btn btn-outline-primary btn-lg custom-font-size">
-        <input type="radio" name="quantity" value="普通" id="quantityMidium" autocomplete="off" required> 普通
-      </label>
-      <label class="btn btn-outline-primary btn-lg custom-font-size">
-        <input type="radio" name="quantity" value="少ない" id="quantityLow" autocomplete="off" required> 少ない
-      </label>
-    </div>
-  </div>
-</div>
-
-
-
+        <div class="mb-3">
+          <h4 class="mb-2 ">1. 課題の量<span class="text-danger">*</span></h4>
+          <div class="d-flex justify-content-center">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn  custom-font-size btn-choice">
+                <input required type="radio" name="quantity" value="多い" id="quantityHigh" autocomplete="off" required> 多い
+              </label>
+              <label class="btn  custom-font-size btn-choice">
+                <input required type="radio" name="quantity" value="普通" id="quantityMidium" autocomplete="off" required> 普通
+              </label>
+              <label class="btn  custom-font-size btn-choice">
+                <input required type="radio" name="quantity" value="少ない" id="quantityLow" autocomplete="off" required> 少ない
+              </label>
+            </div>
+          </div>
+        </div>
 
       
         <!-- 授業資料の有無 -->
-        <div class="card-form mb-3">
-          <div class="card-header bg-orange text-black">2. 授業資料の有無<span class="text-danger">*</span></div>
-          <div class="card-body">
-            <input required type="radio" name="reference" value="あり" id="referenceYes">
-            <label for="referenceYes">あり</label>
-
-            <input required type="radio" name="reference" value="なし" id="referenceNo">
-            <label for="referenceNo">なし</label>
+        <div class="mb-3">
+          <h4 class="bg-orange text-black">2. 授業資料の有無<span class="text-danger">*</span></h4>
+          <div class="d-flex justify-content-center">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn custom-font-size btn-choice">
+                <input required type="radio" name="reference" value="あり" id="referenceYes" autocomplete="off"> あり
+              </label>
+              <label class="btn custom-font-size btn-choice">
+                <input required type="radio" name="reference" value="なし" id="referenceNo" autocomplete="off"> なし
+              </label>
+            </div>
           </div>
         </div>
-
+        
         <!-- グループワークの有無 -->
-        <div class="card-form mb-3">
-          <div class="card-header bg-orange text-black">3. グループワークの有無<span class="text-danger">*</span></div>
-          <div class="card-body">
-            <input required type="radio" name="groupWork" value="あり" id="groupWorkYes">
-            <label for="groupWorkYes">あり</label>
-
-            <input required type="radio" name="groupWork" value="なし" id="groupWorkNo">
-            <label for="groupWorkNo">なし</label>
+        <div class="mb-3">
+          <h4 class="bg-orange text-black">3. グループワークの有無<span class="text-danger">*</span></h4>
+          <div class="d-flex justify-content-center">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn custom-font-size btn-choice">
+                <input required type="radio" name="groupWork" value="あり" id="groupWorkYes" autocomplete="off"> あり
+              </label>
+              <label class="btn custom-font-size btn-choice">
+                <input required type="radio" name="groupWork" value="なし" id="groupWorkNo" autocomplete="off"> なし
+              </label>
+            </div>
           </div>
         </div>
-
+        
         <!-- テストの有無 -->
-        <div class="card-form mb-3">
-          <div class="card-header bg-orange text-black">4. テストの有無<span class="text-danger">*</span></div>
-          <div class="card-body">
-            <input required type="radio" name="hasTests" value="あり" id="hasTestsYes">
-            <label for="hasTestsYes">あり</label>
-
-            <input required type="radio" name="hasTests" value="なし" id="hasTestsNo">
-            <label for="hasTestsNo">なし</label>
+        <div class="mb-3">
+          <h4 class="bg-orange text-black">4. テストの有無<span class="text-danger">*</span></h4>
+          <div class="d-flex justify-content-center">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn custom-font-size btn-choice">
+                <input required type="radio" name="hasTests" value="あり" id="hasTestsYes" autocomplete="off"> あり
+              </label>
+              <label class="btn custom-font-size btn-choice">
+                <input required type="radio" name="hasTests" value="なし" id="hasTestsNo" autocomplete="off"> なし
+              </label>
+            </div>
           </div>
         </div>
-
+        
         <!-- レポートの有無 -->
-        <div class="card-form mb-3">
-          <div class="card-header bg-orange text-black">5. レポートの有無<span class="text-danger">*</span></div>
-          <div class="card-body">
-            <input required type="radio" name="hasReports" value="あり" id="hasReportsYes">
-            <label for="hasReportsYes">あり</label>
-
-            <input required type="radio" name="hasReports" value="なし" id="hasReportsNo">
-            <label for="hasReportsNo">なし</label>
+        <div class="mb-3">
+          <h4 class="bg-orange text-black">5. レポートの有無<span class="text-danger">*</span></h4>
+          <div class="d-flex justify-content-center">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn custom-font-size btn-choice">
+                <input required type="radio" name="hasReports" value="あり" id="hasReportsYes" autocomplete="off"> あり
+              </label>
+              <label class="btn custom-font-size btn-choice">
+                <input required type="radio" name="hasReports" value="なし" id="hasReportsNo" autocomplete="off"> なし
+              </label>
+            </div>
           </div>
         </div>
-
+        
         <!-- プログラミングの有無 -->
-        <div class="card-form mb-3">
-          <div class="card-header bg-orange text-black">6. プログラミングの有無<span class="text-danger">*</span></div>
-          <div class="card-body">
-            <input required type="radio" name="hasProgramming" value="あり" id="hasProgrammingYes">
-            <label for="hasProgrammingYes">あり</label>
-
-            <input required type="radio" name="hasProgramming" value="なし" id="hasProgrammingNo">
-            <label for="hasProgrammingNo">なし</label>
+        <div class="mb-3">
+          <h4 class="bg-orange text-black">6. プログラミングの有無<span class="text-danger">*</span></h4>
+          <div class="d-flex justify-content-center">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn custom-font-size btn-choice">
+                <input required type="radio" name="hasProgramming" value="あり" id="hasProgrammingYes" autocomplete="off"> あり
+              </label>
+              <label class="btn custom-font-size btn-choice">
+                <input required type="radio" name="hasProgramming" value="なし" id="hasProgrammingNo" autocomplete="off"> なし
+              </label>
+            </div>
           </div>
         </div>
+
+
 
         <!-- この授業はどんな人に向き・不向きか？コメント -->
-        <div class="card-form mb-3">
-          <div class="card-header bg-orange text-black">7. この授業はどんな人に向き・不向き？</div>
-          <div class="card-body">
+        <div class="mb-3">
+          <h4 class="bg-orange text-black">7. この授業はどんな人に向き・不向き？<span class="text-danger">*</span></h4>
+          <div class="">
             <textarea name="targetAudience" id="targetAudience" class="form-control"></textarea>
           </div>
         </div>
 
         <!-- その他コメント -->
-        <div class="card-form mb-3">
-          <div class="card-header bg-orange text-black">8. その他コメント</div>
-          <div class="card-body">
+        <div class="mb-3">
+          <h4 class="bg-orange text-black">8. その他コメント<span class="text-danger">*</span></h4>
+          <div class="">
             <textarea name="otherComments" id="otherComments" class="form-control"></textarea>
           </div>
         </div>
 
         <!-- 総合評価 -->
-        <div class="card-form mb-3">
-          <div class="card-header bg-orange text-black">9. 総合評価<span class="text-danger">*</span></div>
-          <div class="card-body">
+        <div class="mb-3">
+          <h4 class="bg-orange text-black">9. 総合評価<span class="text-danger">*</span></h4>
+          <div class="">
           <div class="star-rating" style="text-align: left;">
               <input required type="radio" id="star5" name="rating" value="5">
               <label for="star5"></label>
