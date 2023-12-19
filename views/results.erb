@@ -26,6 +26,10 @@
           .card-title, .form-label {
               color: #48636E;
           }
+          
+          resuly .card-body{
+            background-color: #fff; /* 授業詳細は背景白に */
+          }
   
           .card-body {
               padding: 2rem;
@@ -174,19 +178,21 @@
     <% if @courses.any? %>
       <% @courses.each do |course| %>
         <div class="card mb-3 clickable-card" data-href="/courses/<%= course.id %>">
-          <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col-md-8">
-                <h5 class="card-title"><%= course.className %></h5>
-                <h6 class="card-subtitle mb-2 text-muted">講師: <%= course.teacher %></h6>
-              </div>
-              <div class="col-md-4 text-md-right">
-                <% if @userName == 'admin' %>
-                  <form action="/courses/<%= course.id %>/delete" method="post">
-                    <input type="hidden" name="_method" value="delete">
-                    <button type="submit" class="btn btn-danger">削除</button>
-                  </form>
-                <% end %>
+          <div class="result">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <h5 class="card-title"><%= course.className %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">講師: <%= course.teacher %></h6>
+                </div>
+                <div class="col-md-4 text-md-right">
+                  <% if @userName == 'admin' %>
+                    <form action="/courses/<%= course.id %>/delete" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button type="submit" class="btn btn-danger">削除</button>
+                    </form>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
