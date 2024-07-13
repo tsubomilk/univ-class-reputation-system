@@ -88,7 +88,6 @@ post "/signup" do
 end
 
 
-
 get "/signin" do
     @hide_navbar = true
     erb :sign_in
